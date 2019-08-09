@@ -1,3 +1,7 @@
+body {
+background: #141414;
+color: #f0f0f0;
+}
 .primary {
 	background-color: #1f83e7 !important
 }
@@ -41,7 +45,7 @@
   border-left: 5px solid #1f83e7;
 }
 .btn {
-	width: 205px
+	width: 175px
 }
 .teamm {
 	display: block;
@@ -64,24 +68,49 @@
   text-align: center;
 }
 
+.hd-btn3 {
+	text-align: center;
+	height: 40px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    background-color: #222;
+    border-radius: 4px;
+    border: 2px solid #fff;
 
-.btnn-2{
-	color: black;
-	background-color: #efefef;
 }
-.hd-btn {
+.hd-btn2 {
+	text-align: center;
+	height: 40px;
     color: black;
     font-size: 14px;
     font-weight: 700;
-    background-color: #ffffff;
-    border-radius: 5px;
-    border: 2px solid #000000;
-  
+    background-color: #fff;
+    border-radius: 18px;
+    border: 2px solid #fff;
 }
+
 .html, .body {
     height: 100%;
 }
 .ss-img {
 	height: 368px;
 	width: 207px;
+}
+.buttons-center{
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: 15px;
+}
+
+.nav-background{
+  background-color: #141414;
+}
+
+.card-theme-color{
+  background-color: #1e1e1e;
+}
+
+.collapsible-header{
+	    border-bottom: 0px solid #ddd;
 }

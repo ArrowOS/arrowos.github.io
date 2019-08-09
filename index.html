@@ -3,7 +3,8 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <link rel="shortcut icon" type="image/png" href="favicon.ico" />
+  <meta name="theme-color" content="#141414" />
+  <link rel="shortcut icon" type="image/png" href="img/logo.png" />
   <meta name="description" content="ArrowOS is an AOSP based project started with the aim of keeping things simple, clean and neat. We added just the right and mostly used stuff that will be actually USEFUL at the end of the day, aiming to deliver smooth performance with better battery life">
   <title>ArrowOS</title>
 
@@ -13,36 +14,27 @@
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/index_debug.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	
+
   <!-- cookies consent -->
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
-    <script>
-    window.addEventListener("load", function(){
-    window.cookieconsent.initialise({
-    "palette": {
-        "popup": {
-        "background": "#237afc"
-        },
-        "button": {
-        "background": "#fff",
-        "text": "#237afc"
-        }
-    },
-    "theme": "edgeless",
-    "position": "bottom"
-    })});
-    </script>
+
+    <style>
+    body {
+  background: #141414;
+  color: #f0f0f0;
+}
+
+    </style>
 </head>
     <div class="navbar-fixed">
-        <nav class="white black-text z-depth-0">
+        <nav class="nav-background black-text z-depth-0 hide-on-med-and-down">
             <div class="nav-wrapper container">
-                
+
                     <div class="nav-wrapper ">
                       <ul class="right hide-on-med-and-down">
-                       <li class="tab col s3"><a class="main-font black-text" href="index.html">Home</a></li>
-                       <li class="tab col s3"><a class="main-font black-text" href="https://sourceforge.net/projects/arrow-os/files/">Download</a></li>
-                       <li class="tab col s3"><a class="main-font black-text" href="https://github.com/arrowos">Source</a></li>
+                       <li class="tab col s3"><a class="main-font white-text" href="index.html">Home</a></li>
+                       <li class="tab col s3"><a class="main-font white-text" href="download.html">Download</a></li>
+                       <li class="tab col s3"><a class="main-font white-text" href="https://github.com/arrowos">Source</a></li>
                       </ul>
                     </div>
               </div>
@@ -55,21 +47,20 @@
   <div class="section no-pad-bot" id="banner">
     <div class="container">
       <br>
-      <img class="logo center" src="img/meh.png">
-       <h2 class="textt main-font center black-text">ArrowOS</h2>
+      <img class="logo center" src="img/logo.png">
+       <h2 class="textt main-font center white-text">ArrowOS</h2>
         <div class="center">
         <br>
         <div class="center">
-        <a href="download.html" class="waves-effect waves-light btn z-depth-3 hd-btn"><i class="material-icons left"></i>Download</a>
-        <a href="https://blog.arrowos.net" class="waves-effect waves-light btn z-depth-3  hd-btn"><i class="material-icons left"></i>Blog</a>
-  
-      </div>
+        <a href="download.html" class="waves-effect hoverable waves-white white btn z-depth-3 hd-btn2">Download</a>
+        <a href="https://blog.arrowos.net" class="waves-effect hoverable waves-white white btn z-depth-3 hd-btn2">Blog</a>
+        </div>
         <br>
         <br>
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <div class="container">
     <div class="section">
@@ -77,83 +68,84 @@
       <div>
             <blockquote class="block">
             <h2 class="header main-font primary-color">About</h2>
-          </blockquote>    
+          </blockquote>
       <div>
                 <p class="flow-text main-font paragraph text3 text-lighten-3">ArrowOS is an AOSP based project started with the aim of keeping things simple, clean and neat. We added just the right and mostly used stuff that will be actually USEFUL at the end of the day, aiming to deliver smooth performance with better battery life.</p>
       </div>
-       
+
        <div>
             <div class="divider padding"></div>
        </div>
 
-    <br> 
+    <br>
 
        <div>
             <blockquote class="block">
             <h2 class="header main-font primary-color">Screenshots</h2>
-          </blockquote>    
+          </blockquote>
       </div>
 
       <div class="row">
         <div class="col s6 m6 l3">
-          <img class="center responsive-img" src="img/sp2.png">
+          <img class="center hoverable responsive-img" src="img/ss1.png">
         </div>
         <div class="col s6 m6 l3">
-          <img class="center responsive-img" src="img/sp3.png">
+          <img class="center hoverable responsive-img" src="img/ss2.png">
         </div>
         <div class="col s6 m6 l3">
-          <img class="center responsive-img" src="img/sp4.png">
+          <img class="center hoverable responsive-img" src="img/ss3.png">
         </div>
         <div class="col s6 m6 l3">
-          <img class="center responsive-img" src="img/sp1.png">
+          <img class="center hoverable responsive-img" src="img/ss4.png">
         </div>
         </div>
-           
+
        <div>
             <div class="divider padding"></div>
        </div>
 
-    <br> 
+    <br>
 
        <div>
             <blockquote class="block">
             <h2 class="header main-font primary-color">Want to join us?</h2>
-          </blockquote>    
+          </blockquote>
       </div>
 	  <div class="center">
       <p>If you think you have the spare time to contribute and you wish to improve something with your skills don't hesistate to mail us. You will not be ignored, we listen to everyone!</p>
-      <a href="mailto:arrowos.contact@gmail.com" class="waves-effect waves-light btn primary"><i class="material-icons left"></i>Contact us</a>
+      <br>
+      <a href="mailto:arrowos.contact@gmail.com" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Contact us</a>
       <br> <br>
       <br>
             </div></div>
-     
+
            <div>
             <div class="divider padding"></div>
            </div>
            <div>
             <blockquote class="block">
             <h2 class="header main-font primary-color">Important Links</h2>
-          </blockquote>    
+          </blockquote>
       </div>
 
-       <div class="row">
-	     
-            <a href="https://t.me/arrowos" class="waves-effect waves-light btn btnn-2"><i class="material-icons left"></i>Telegram Group</a>
-            <a href="https://t.me/arrow_os" class="waves-effect waves-light btn btnn-2"><i class="material-icons left"></i>Telegram Channel</a>
+       <div class="buttons-center">
+
+            <a href="https://t.me/arrowos" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Telegram Group</a>
+            <a href="https://t.me/arrow_os" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Telegram Channel</a>
               <br><br>
-            <a href="https://github.com/arrowos" class="waves-effect waves-light btn primary"><i class="material-icons left"></i>Source Code</a>
-            <a href="https://review.arrowos.net" class="waves-effect waves-light btn primary"><i class="material-icons left"></i>Code Review</a>
+            <a href="https://github.com/arrowos" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Source Code</a>
+            <a href="https://review.arrowos.net" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Code Review</a>
              <br> <br>
-            <a href="https://crowdin.com/project/arrowos" class="waves-effect waves-light btn btnn-2"><i class="material-icons left"></i>Translate</a>
-            <a href="https://stats.arrowos.net" class="waves-effect waves-light btn btnn-2"><i class="material-icons left"></i>Stats</a>
+            <a href="https://crowdin.com/project/arrowos" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Translate</a>
+            <a href="https://stats.arrowos.net" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Stats</a>
              <br> <br>
-            <a href="https://blog.arrowos.net/posts/apply-for-maintainership" class="waves-effect waves-light btn primary"><i class="material-icons left"></i>Maintain</a>
-            <a href="https://blog.arrowos.net/posts/compilation-guide" class="waves-effect waves-light btn primary"><i class="material-icons left"></i>Compile</a>
+            <a href="https://blog.arrowos.net/posts/apply-for-maintainership" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Maintain</a>
+            <a href="https://blog.arrowos.net/posts/compilation-guide" class="waves-effect grey darken-4 waves-light btn z-depth-3 hd-btn3">Compile</a>
              <br> <br>
 			 <br>
-			
-        </div> 
-		
+
+        </div>
+
          <div>
             <div class="divider padding"></div>
          </div>
@@ -165,111 +157,41 @@
 <h2 class="header main-font primary-color">TEAM</h2>
 </div>
    <div class="col s12 m6 l6 offset-l3">
-          <div class="card radius">
+          <div class="card card-theme-color z-depth-3 radius">
               <div class="card-content">
         <span class="card-title primary-color main-font">Project In-charges</span>
-        <center><p>A to Z</p></center>
-              <div class="collapsible-header"><a class="black-text" href="https://github.com/Bauuuuu">Bauuuuu</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://github.com/ganeshi4u">Ganesh Varma</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://github.com/kubersharma001">Kuber Sharma</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://github.com/Lyudmila17">Lyuu</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://github.com/Bauuuuu">Bauuuuu</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://github.com/ganeshi4u">Ganesh Varma</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://github.com/kubersharma001">Kuber Sharma</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://github.com/Lyudmila17">Lyuu</a></div>
               </div>
           </div>
         </div>
    <div class="col s12 m6 l6 offset-l3">
-          <div class="card radius">
+          <div class="card card-theme-color z-depth-3 radius">
               <div class="card-content">
         <span class="card-title primary-color main-font">Project Contributors</span>
-        <div class="center"><p>A to Z</p></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/vegeto1806"><b>Abhay Kshatriya</b> (Zenfone 3 - zenfone3)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/Akash98Sky"><b>Akash Mondal</b> (LeEco Le2 - s2)</a></div>
-		<div class="collapsible-header"><a class="black-text" href="https://t.me/saisamy95"><b>Ashwathama</b> (Moto G5s Plus - sanders)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/balajivr06"><b>Balaji VR</b> (Oneplus One - bacon)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://github.com/Bauuuuu"><b>Bauuuuu</b> (Nubia Z9 Max - nx512j &amp; Redmi 3s - land &amp; Oneplus 5/T cheeseburger/dumpling &amp; OnePlus 6 - enchilada &amp; Asus Zenfone Max Pro M2 - X01BD &amp; Generic System Image) &amp; Blog | Website</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/Ded_Boi"><b>Dhanush Krishnan</b> (Oneplus 3/t - oneplus3)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/ganeshvarma"><b>Ganesh Varma</b> (Redmi Note 4 - mido &amp; Pocofone F1 - beryllium) &amp; Generic System Image &amp; Blog | Website</a></div>
-		<div class="collapsible-header"><a class="black-text" href="https://t.me/GiaSen"><b>Giamma Sena</b> Redmi Note 4 (mido)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/harshv23"><b>Harsh V23</b> (Web Developer - website)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/coldhans"><b>Joel Hans</b> (Huawei Honor 5X - kiwi &amp; Moto g5 Plus - potter)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/kubersharma"><b>Kuber Sharma</b> (Zuk Z2 - z2_plus &amp; Asus Zenfone Max Pro M2 - X01BD &amp; Moto g5 Plus - potter) &amp; Blog | Website</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/lyudmila_rev1917"><b>Lyuu</b> ( Moto g4/g4 Plus - Athene)</a></div>
-		<div class="collapsible-header"><a class="black-text" href="https://t.me/Perfectime94"><b>Lineu Martins</b> ( Xiaomi Mi Mix 2 - chiron)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/palaych"><b>palaych</b> (Xiaomi Mi MIX 2S - Polaris)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/parshva99"><b>parshva99</b> (Motorola One Power - chef)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/jadejaraj"><b>Raj Jadeja</b> (Moto G5s Plus - sanders &amp; Redmi Note 5 Pro - whyred)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/Sksbss"><b>Sonal Singh</b> (Redmi 4x - Santoni)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://t.me/SujitRoy"><b>Sujit Roy</b> (Zenfone Max Pro M1 - X00TD)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/vegeto1806"><b>Abhay Kshatriya</b> (Zenfone 3 - zenfone3)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/Akash98Sky"><b>Akash Mondal</b> (LeEco Le2 - s2)</a></div>
+		    <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/saisamy95"><b>Ashwathama</b> (Moto G5s Plus - sanders)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/balajivr06"><b>Balaji VR</b> (Oneplus One - bacon)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://github.com/Bauuuuu"><b>Bauuuuu</b> (Nubia Z9 Max - nx512j &amp; Redmi 3s - land &amp; Oneplus 5/T cheeseburger/dumpling &amp; OnePlus 6 - enchilada &amp; Asus Zenfone Max Pro M2 - X01BD &amp; Generic System Image) &amp; Blog | Website</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/Ded_Boi"><b>Dhanush Krishnan</b> (Oneplus 3/t - oneplus3)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/ganeshvarma"><b>Ganesh Varma</b> (Redmi Note 4 - mido &amp; Pocofone F1 - beryllium) &amp; Generic System Image &amp; Blog | Website</a></div>
+		    <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/GiaSen"><b>Giamma Sena</b> Redmi Note 4 (mido)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/harshv23"><b>Harsh V23</b> (Web Developer - website)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/coldhans"><b>Joel Hans</b> (Huawei Honor 5X - kiwi &amp; Moto g5 Plus - potter)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/kubersharma"><b>Kuber Sharma</b> (Zuk Z2 - z2_plus &amp; Asus Zenfone Max Pro M2 - X01BD &amp; Moto g5 Plus - potter) &amp; Blog | Website</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/lyudmila_rev1917"><b>Lyuu</b> ( Moto g4/g4 Plus - Athene)</a></div>
+		    <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/Perfectime94"><b>Lineu Martins</b> ( Xiaomi Mi Mix 2 - chiron)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/palaych"><b>palaych</b> (Xiaomi Mi MIX 2S - Polaris)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/parshva99"><b>parshva99</b> (Motorola One Power - chef)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/jadejaraj"><b>Raj Jadeja</b> (Moto G5s Plus - sanders &amp; Redmi Note 5 Pro - whyred)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/Sksbss"><b>Sonal Singh</b> (Redmi 4x - Santoni)</a></div>
+        <div class="collapsible-header card-theme-color"><a class="white-text" href="https://t.me/SujitRoy"><b>Sujit Roy</b> (Zenfone Max Pro M1 - X00TD)</a></div>
         </div>
               </div>
-        <div class="col s12 m6 l6 offset-l3">
-          <div class="card radius">
-              <div class="card-content">
-        <span class="card-title primary-color main-font">Translators</span>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/albaraa456">ALBARAA MARWAN - Arabic</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/aurelien.dispenza">Aurélien Dispenza (aurelien.dispenza) - French</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/AyamDobhal">Ayam Dobhal (AyamDobhal) - Hindi</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/BasK">BasK - Dutch and Chinese Simplified</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/Bauuuuu">Bauuuuu - Spanish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/characteress">Gustavo (characteress) - Portuguese, Brazillian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/characteress">Benetti_Cdia (7_benetti) - Portuguese, Brazillian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/DBmain">Denis (DBmain) - Russian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/ipetrenko89">Ihor Petrenko (ipetrenko89) - Ukrainian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/konnyaku2mc">mamarama9904 (konnyaku2mc) - Japanese</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/lixianwei1998">lixianwei (lixianwei1998) - Chinese</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/m.stanislav11"></a>Станислав Малахов (m.stanislav11) - Russian</div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/marcomest16">Marco Mestriner (marcomest16) - Italian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/novas78">Lukas Novotny (novas78) - Czech</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/nunoteixeira">Nuno Teixeira (nunoteixeira) - Portuguese</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/paivarinnepessi">Pessi P. (Pessi P.) (paivarinnepessi) - Finnish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/Relaxx">Murat Kozan (Relaxx) - Turkish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/sergiograssi2003">SergioPlus (sergiograssi2003) - Italian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/riqueury">Riqueury Alejandro (riqueury) - Spanish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/undeadbird">Антон Перья (undeadbird) - Russian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/vegeto1806">vegeto1806 - Hindi</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/vibhawa">Vibhawa Bandhu Bajpai - Hindi</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/Xeroxk">Xeroxk - Vietnamese</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/Razziell">Alex Shumilov - Russian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/magiccube22">Alone Wolf - Spanish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/Andreaevangelina">Andreaevangelina - Spanish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/z.andres367">Andrés Ortiz- Spanish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/anotherrr">anotherrr- Japanese</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/Antonio-Orel">Antonio-Orel- Russian</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile/arek31">arek31- Polish</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile//blue-dogerino">blue-dogerino- Serbian (Cyrillic)</a></div>
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile//Blueberry87">Blueberry87- German</a></div>        
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile//bruno.hc20">Brunno Carvalho- Portuguese, Brazilian</a></div>   
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile//Byrness">Byrness- Spanish</a></div> 
-        <div class="collapsible-header"><a class="black-text" href="https://crowdin.com/profile//benimlancan">Can Demir- German</a></div>               
-
-       <!-- 
-       
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div> 
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div> 
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div> 
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div>
-       <div class="collapsible-header"><a class="black-text" href=""></a></div> 
-       
-       -->
-       
-              </div>
-          </div>
-        </div>
-    </div>
+      </div>
     <br>
          <div>
             <div class="divider padding"></div>
@@ -281,14 +203,14 @@
 <script type="text/javascript" src="https://www.free-counters.org/count/vmy"></script><br>
  <a href='https://www.stat-counter.org/'>stat-counter.org</a> <script type='text/javascript' src='https://www.whomania.com/ctr?id=90d0911bc00ba8cc3cd8c383824dfb16d60844ac'></script>
         </div>
-    
+
     </div>
     </div>
   </div>
 
     </div>
   </div>
-  <footer class="page-footer light-blue">
+  <footer class="page-footer card-theme-color">
     <div class="container">
     </div>
     <div class="footer-copyright">
@@ -300,13 +222,28 @@
 
 
   <!--  Scripts-->
-  <script src="../../bin/materialize.js"></script>
+  <script src="./js/materialize.js"></script>
   <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
-  <script type="text/javascript " src="js/materialize.min.js "></script>
-  <script src="js/init.js"></script>
   <script type="text/javascript"> $(document).ready(function(){
     $('.sidenav').sidenav();
   });</script>
   <script type="text/javascript">$('#push,secton').pushpin({ top:$('#push').height() });</script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+  <script>
+  window.addEventListener("load", function(){
+  window.cookieconsent.initialise({
+  "palette": {
+      "popup": {
+      "background": "#237afc"
+      },
+      "button": {
+      "background": "#fff",
+      "text": "#237afc"
+      }
+  },
+  "theme": "edgeless",
+  "position": "bottom"
+  })});
+  </script>
   </body>
 </html>
