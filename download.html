@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="theme-color" content="#141414" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <link rel="shortcut icon" type="image/png" href="img/logo.png" />
+  <meta name="description" content="ArrowOS is an AOSP based project started with the aim of keeping things simple, clean and neat. We added just the right and mostly used stuff that will be actually USEFUL at the end of the day, aiming to deliver smooth performance with better battery life">
+  <title>ArrowOS</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/index_debug.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<div class="navbar-fixed">
+    <nav class="nav-background black-text z-depth-0 hide-on-med-and-down">
+        <div class="nav-wrapper container">
+
+                <div class="nav-wrapper ">
+                  <ul class="right hide-on-med-and-down">
+                   <li class="tab col s3"><a class="main-font white-text" href="index.html">Home</a></li>
+                   <li class="tab col s3"><a class="main-font white-text" href="https://github.com/arrowos">Source</a></li>
+                  </ul>
+                </div>
+          </div>
+    </nav>
+</div>
+
+<!-- main content -->
+<div id="push"></div>
+  <br>
+  <div class="section" id="banner">
+    <div class="container">
+      <br>
+      <img class="logo center" src="img/logo.png">
+      <br>
+       <h2 class="textt main-font center white-text">Download ArrowOS</h2>
+        <div class="center">
+        <br>
+        <div class="center">
+          <a href="pie.html" class="waves-effect waves-whhite white black-text btn z-depth-3 hd-btn"><i class="material-icons left"></i>Android 9.x - Pie</a><br><br>
+          <a href="oreo.html" class="waves-effect waves-whhite white black-text btn z-depth-3 hd-btn"><i class="material-icons left"></i>Android 8.x - Oreo</a>
+        </div>
+        <br>
+        <br>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--  Scripts-->
+  <script src="../../bin/materialize.js"></script>
+  <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
+  <script type="text/javascript " src="js/materialize.min.js "></script>
+  <script src="js/init.js"></script>
+  <script type="text/javascript"> $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });</script>
+  <script type="text/javascript">$('#push,secton').pushpin({ top:$('#push').height() });</script>
+  </body>
+</html>
