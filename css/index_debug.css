@@ -15,12 +15,17 @@ color: #f0f0f0;
 	width: 150px;
 	margin-bottom: -20px
 }
+.main_logo{
+  height: 350px;
+  width: 350px;
+  margin-top: -55px;
+  margin-bottom: -120px;
+}
 .sub-head {
 	font-size: 20px
 }
 .textt {
-	font-size: 54px
-	margin-bottom: -20px
+	font-size: 54px;
 }
 .header {
 	font-size: 30px
