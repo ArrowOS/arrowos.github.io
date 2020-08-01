@@ -84,7 +84,7 @@
     <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
 
     <div class="container">
-        <div class="row">
+        <div class="row" style="overflow-x:auto;">
             <h4 style="padding-bottom: 20px;">Integrity check</h4>
                         <table class="highlight responsive-table">
                             <blockquote>You can check the sha256 of the following build types</blockquote>
