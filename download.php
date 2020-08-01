@@ -31,7 +31,7 @@
             <?php
             foreach ($devices_json as $device_oem => $devices) {
             ?>
-                <li class="bold"><a class="collapsible-header waves-effect "><?php echo ($device_oem != null) ? ($device_oem) : ("") ?></a>
+                <li class="bold"><a class="collapsible-header waves-effect " style="font-weight:bold"><?php echo ($device_oem != null) ? ($device_oem) : ("") ?></a>
                     <div class="collapsible-body">
                         <ul>
                             <?php
