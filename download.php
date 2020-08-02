@@ -38,7 +38,7 @@
                             foreach ($devices as $device_codename) {
                             ?>
                                 <li>
-                                    <a id="deviceLabel"><?php echo $device_codename ?></a>
+                                    <a class="sidenav-close" id="deviceLabel"><?php echo $device_codename ?></a>
                                 </li>
                             <?php } ?>
                         </ul>
@@ -68,9 +68,9 @@
     <!--  Scripts-->
     <!-- JS -->
     <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/download.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/download.js"></script>
 
 </body>
 
