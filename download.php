@@ -1,3 +1,6 @@
+<?php
+include_once('utils.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,8 +27,12 @@
     <ul id="slide-out" class="sidenav sidenav-fixed collapsible grey lighten-2">
         <ul class="collapsible collapsible-accordion">
             <?php
-
-            $devices_json = json_decode(file_get_contents("https://update.arrowos.net/api/v1/oem/devices/vanilla/"), true);
+            $devices_json = fetch_api_data("https://update.arrowos.net/api/v1/oem/devices/vanilla/");
+            if ($devices_json['code'] == "200") {
+                $devices_json = json_decode($devices_json['data'], true);
+            } else {
+                exit("Failed to fetch devices!");
+            }
             ?>
 
             <?php

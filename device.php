@@ -1,3 +1,6 @@
+<?php
+include_once('utils.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,13 +21,26 @@
 
 <body>
     <?php
-    if (isset($_GET['device']))
+    if (isset($_GET['device'])) {
         $device = $_GET['device'];
-    $device_info = json_decode(file_get_contents("https://update.arrowos.net/api/v1/info/{$device}/vanilla/"), true);
-    $gapps_device_info = json_decode(file_get_contents("https://update.arrowos.net/api/v1/info/{$device}/gapps/"), true);
+        //$device = "geh";
+        $device_info = fetch_api_data("https://update.arrowos.net/api/v1/info/{$device}/vanilla/");
+        $gapps_device_info = fetch_api_data("https://update.arrowos.net/api/v1/info/{$device}/gapps/");
 
-    $device_info = $device_info['response'][0];
-    $gapps_device_info = $gapps_device_info['response'][0];
+        if ($device_info['code'] == "200" && $gapps_device_info['code'] == "200") {
+            $device_info = json_decode($device_info['data'], true);
+            $gapps_device_info = json_decode($gapps_device_info['data'], true);
+
+            if (isset($device_info) && isset($gapps_device_info)) {
+                $device_info = $device_info['response'][0];
+                $gapps_device_info = $gapps_device_info['response'][0];
+            }
+        } else {
+            exit("Failed to fetch device info!");
+        }
+    } else {
+        exit();
+    }
     ?>
     <div class="center hide-on-large-only">
         <img class="main_logo" src="img/logo.png">
@@ -86,27 +102,27 @@
     <div class="container">
         <div class="row" style="overflow-x:auto;">
             <h4 style="padding-bottom: 20px;">Integrity check</h4>
-				<strong>The sha256 of the following build types are:</strong>
-					<table class="highlight responsive-table">
-						<tbody>
-							<tr>
-								<td><b>VANILLA:</b></td>
-								<td><?php echo $device_info['sha256'] ?></td>
-							</tr>
-						</tbody>
-						<tbody>
-							<tr>
-								<td><b>GAPPS:</b></td>
-								<td><?php echo $gapps_device_info['sha256'] ?></td>
-							</tr>
-						</tbody>
-					</table>
+            <strong>The sha256 of the following build types are:</strong>
+            <table class="highlight responsive-table">
+                <tbody>
+                    <tr>
+                        <td><b>VANILLA:</b></td>
+                        <td><?php echo $device_info['sha256'] ?></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td><b>GAPPS:</b></td>
+                        <td><?php echo $gapps_device_info['sha256'] ?></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-		<strong>You can check sha256sum via the following command:</strong><br>
-		<b>Windows (Powershell):</b>
-		<blockquote>Get-filehash filename.zip</blockquote>
-		<b>Linux (Ubuntu 20.4):</b>
-		<blockquote>sha256sum filename.zip</blockquote>
+        <strong>You can check sha256sum via the following command:</strong><br>
+        <b>Windows (Powershell):</b>
+        <blockquote>Get-filehash filename.zip</blockquote>
+        <b>Linux (Ubuntu 20.4):</b>
+        <blockquote>sha256sum filename.zip</blockquote>
     </div>
 
     <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
