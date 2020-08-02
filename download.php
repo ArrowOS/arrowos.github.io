@@ -30,6 +30,7 @@ include_once('utils.php');
             $devices_json = fetch_api_data("https://update.arrowos.net/api/v1/oem/devices/vanilla/");
             if ($devices_json['code'] == "200") {
                 $devices_json = json_decode($devices_json['data'], true);
+                krsort($devices_json);
             } else {
                 exit("Failed to fetch devices!");
             }
@@ -38,7 +39,7 @@ include_once('utils.php');
             <?php
             foreach ($devices_json as $device_oem => $devices) {
             ?>
-                <li class="bold"><a class="collapsible-header waves-effect " style="font-weight:bold"><?php echo ($device_oem != null) ? ($device_oem) : ("") ?></a>
+                <li class="bold"><a class="collapsible-header waves-effect " style="font-weight:bold"><?php echo ($device_oem != null) ? (ucfirst($device_oem)) : ("") ?></a>
                     <div class="collapsible-body">
                         <ul>
                             <?php
