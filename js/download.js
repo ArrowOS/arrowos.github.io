@@ -14,4 +14,8 @@ $(document).ready(function() {
         localStorage.setItem("device", selectedDevice);
         $('#device-content').load("device.php", 'device=' + selectedDevice);
     });
+
+    $('body').on('click', '#select-device', function() {
+        $('.sidenav').sidenav('open');
+    });
 });
