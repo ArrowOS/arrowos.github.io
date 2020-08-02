@@ -86,17 +86,21 @@
     <div class="container">
         <div class="row" style="overflow-x:auto;">
             <h4 style="padding-bottom: 20px;">Integrity check</h4>
-                        <table class="highlight responsive-table">
-                            <blockquote>You can check the sha256 of the following build types</blockquote>
-                                <tr>
-                                    <td><b>VANILLA:</b></td>
-                                    <td><?php echo $device_info['sha256'] ?></code></td>
-                                </tr>
-                                <tr>
-                                    <td><b>GAPPS:</b></td>
-                                    <td><?php echo $gapps_device_info['sha256'] ?></td>
-                                </tr>
-                        </table>
+				<blockquote>You can check the sha256 of the following build types</blockquote>
+					<table class="highlight responsive-table">
+						<tbody>
+							<tr>
+								<td><b>VANILLA:</b></td>
+								<td><?php echo $device_info['sha256'] ?></td>
+							</tr>
+						</tbody>
+						<tbody>
+							<tr>
+								<td><b>GAPPS:</b></td>
+								<td><?php echo $gapps_device_info['sha256'] ?></td>
+							</tr>
+						</tbody>
+					</table>
         </div>
     </div>
 
