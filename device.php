@@ -50,7 +50,7 @@
     <div class="container">
         <div class="row">
             <h4 style="padding-bottom: 20px;">Downloads</h4>
-            <div class="col s12 m6 l5">
+            <div class="col s12 m6 l6">
                 <div class="card card-theme-color darken-1">
                     <div class="card-content white-text">
                         <span class="card-title"><b>VANILLA</b> build</span>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m6 l5">
+            <div class="col s12 m6 l6">
                 <div class="card card-theme-color">
                     <div class="card-content white-text">
                         <span class="card-title"><b>GAPPS</b> build</span>

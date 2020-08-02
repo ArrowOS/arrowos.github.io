@@ -21,7 +21,7 @@
         </div>
     </nav>
 
-    <ul id="slide-out" class="sidenav sidenav-fixed collapsible">
+    <ul id="slide-out" class="sidenav sidenav-fixed collapsible grey lighten-2">
         <ul class="collapsible collapsible-accordion">
             <?php
 
