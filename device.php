@@ -49,7 +49,7 @@ include_once('utils.php');
     </div>
 
     <div style="padding-top: 50px;" class="container">
-        <h4 style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model'])) ?></h4>
+        <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model'])) ?></h4>
         <div style="padding-left: 15px;" class="row">
             <div class="card card-theme-color darken-1 col s12 m12 l10 ">
                 <div class="card-content white-text">
@@ -65,7 +65,7 @@ include_once('utils.php');
 
     <div class="container">
         <div class="row">
-            <h4 style="padding-bottom: 20px;">Downloads</h4>
+            <h4 class="primary-color" style="padding-bottom: 20px;">Downloads</h4>
             <div class="col s12 m6 l6">
                 <div class="card card-theme-color darken-1">
                     <div class="card-content white-text">
@@ -101,7 +101,7 @@ include_once('utils.php');
 
     <div class="container">
         <div class="row" style="overflow-x:auto;">
-            <h4 style="padding-bottom: 20px;">Integrity check</h4>
+            <h4 class="primary-color" style="padding-bottom: 20px;">Integrity check</h4>
             <strong>The sha256 of the following build types are:</strong>
             <table class="highlight responsive-table">
                 <tbody>
@@ -120,16 +120,16 @@ include_once('utils.php');
         </div>
         <strong>You can check sha256sum via the following command:</strong><br>
         <b>Windows (Powershell):</b>
-        <blockquote>Get-filehash filename.zip</blockquote>
+        <blockquote class="block">Get-filehash filename.zip</blockquote>
         <b>Linux (Ubuntu 20.4):</b>
-        <blockquote>sha256sum filename.zip</blockquote>
+        <blockquote class="block">sha256sum filename.zip</blockquote>
     </div>
 
     <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
 
     <div class="container">
         <div class="row">
-            <h4 style="padding-bottom: 20px;">Changelogs</h4>
+            <h4 class="primary-color" style="padding-bottom: 20px;">Changelogs</h4>
             <div class="col s12 m12 l10">
                 <div class="card card-theme-color darken-1">
                     <div class="card-content white-text">
@@ -144,6 +144,24 @@ include_once('utils.php');
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+        <h4 class="primary-color" style="padding-bottom: 20px;">Ads</h4>
+            <div class="col s12 m6 l10">
+                <div class="card card-theme-color z-depth-3 radius">
+                    <div class="center card-content">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5568741006164863" data-ad-slot="7462336018"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>

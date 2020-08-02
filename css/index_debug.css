@@ -1,92 +1,112 @@
 body {
-background: #141414;
-color: #f0f0f0;
+    background: #141414;
+    color: #f0f0f0;
 }
+
 .primary {
-	background-color: #1f83e7 !important
+    background-color: #1f83e7 !important
 }
 
 .logo {
-	display: block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
-	height: 150px;
-	width: 150px;
-	margin-bottom: -20px
+    height: 150px;
+    width: 150px;
+    margin-bottom: -20px
 }
-.main_logo{
-  height: 350px;
-  width: 350px;
-  margin-top: -55px;
-  margin-bottom: -120px;
+
+.main_logo {
+    height: 350px;
+    width: 350px;
+    margin-top: -55px;
+    margin-bottom: -120px;
 }
+
 .sub-head {
-	font-size: 20px
+    font-size: 20px
 }
+
 .textt {
-	font-size: 54px;
+    font-size: 54px;
 }
+
 .header {
-	font-size: 30px
+    font-size: 30px
 }
+
 .ss-title {
     text-align: center;
     padding-top: 30px;
     font-size: 35px;
 }
+
 .main-font {
-  font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
+
 .primary-color {
-	color: #1f83e7 !important
+    color: #1f83e7 !important
 }
+
 .text3 {
-	font-size: 21px
+    font-size: 21px
 }
+
 .block {
-  margin: 20px 0;
-  padding-left: 1.5rem;
-  border-left: 5px solid #1f83e7;
+    margin: 20px 0;
+    padding-left: 1.5rem;
+    border-left: 5px solid #1f83e7;
 }
+
 .btn {
-	width: 175px
+    width: 175px
 }
+
 .teamm {
-	display: block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
 }
+
 .card-title {
-	text-align: center;
+    text-align: center;
 }
+
 .position {
-	text-align: center;
+    text-align: center;
 }
+
 .card {
-	border-radius: 8px;
+    border-radius: 8px;
 }
+
 .footer-center {
-  margin: auto;
-  display: block;
-  text-align: center;
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+
+.footer-button {
+    margin-left: 8px;
 }
 
 .hd-btn3 {
-	text-align: center;
-	height: 40px;
+    text-align: center;
+    height: 40px;
     color: white;
     font-size: 14px;
     font-weight: 700;
     background-color: #222;
     border-radius: 4px;
     border: 2px solid #fff;
-
 }
+
 .hd-btn2 {
-	text-align: center;
-	height: 40px;
+    text-align: center;
+    height: 40px;
     color: black;
     font-size: 14px;
     font-weight: 700;
@@ -95,27 +115,30 @@ color: #f0f0f0;
     border: 2px solid #fff;
 }
 
-.html, .body {
+.html,
+.body {
     height: 100%;
 }
+
 .ss-img {
-	height: 368px;
-	width: 207px;
-}
-.buttons-center{
-  text-align: center;
-  margin-top: 60px;
-  margin-bottom: 15px;
+    height: 368px;
+    width: 207px;
 }
 
-.nav-background{
-  background-color: #141414;
+.buttons-center {
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 15px;
 }
 
-.card-theme-color{
-  background-color: #1e1e1e;
+.nav-background {
+    background-color: #141414;
 }
 
-.collapsible-header{
-	    border-bottom: 0px solid #ddd;
+.card-theme-color {
+    background-color: #1e1e1e;
+}
+
+.collapsible-header {
+    border-bottom: 0px solid #ddd;
 }

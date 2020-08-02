@@ -11,6 +11,7 @@ include_once('utils.php');
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.4.55/css/materialdesignicons.min.css">
     <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/index_debug.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
@@ -62,14 +63,23 @@ include_once('utils.php');
 
 
     <footer class="page-footer card-theme-color">
-        <div class="container">
-        </div>
-        <div class="footer-copyright">
-            <div class="container footer-center">
-                Designed by <b><a class="white-text" href="https://t.me/harshv23/">HarshV23
-                    </a></b><br>Copyright © 2020 ArrowOS<br>
+            <div class="container">
+                <div class="center">
+                    <a class="btn-floating btn-small waves-effect waves-light white" href="https://t.me/arrowos"><i class="mdi mdi-telegram grey-text text-darken-3"></i></a>
+                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://github.com/arrowos"><i class="mdi mdi-github grey-text text-darken-3"></i></a>
+                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://review.arrowos.net"><i class="mdi mdi-git grey-text text-darken-3"></i></a>
+                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://crowdin.com/project/arrowos"><i class="mdi mdi-translate grey-text text-darken-3"></i></a>
+                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://stats.arrowos.net"><i class="mdi mdi-chart-box-outline grey-text text-darken-3"></i></a>
+                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://blog.arrowos.net"><i class="mdi mdi-blogger grey-text text-darken-3"></i></a>
+                </div>
+                <br>
             </div>
-        </div>
+            <div class="footer-copyright">
+                <div class="container footer-center">
+                    Designed by <b><a style="font-size: medium;" class="white-text" href="https://t.me/harshv23/">HarshV23
+          </a></b><br>Copyright © 2020 ArrowOS<br><br>
+                </div>
+            </div>
     </footer>
 
 
