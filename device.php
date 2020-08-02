@@ -86,7 +86,7 @@
     <div class="container">
         <div class="row" style="overflow-x:auto;">
             <h4 style="padding-bottom: 20px;">Integrity check</h4>
-				<blockquote>You can check the sha256 of the following build types</blockquote>
+				<strong>The sha256 of the following build types are:</strong>
 					<table class="highlight responsive-table">
 						<tbody>
 							<tr>
@@ -102,6 +102,11 @@
 						</tbody>
 					</table>
         </div>
+		<strong>You can check sha256sum via the following command:</strong><br>
+		<b>Windows (Powershell):</b>
+		<blockquote>Get-filehash filename.zip</blockquote>
+		<b>Linux (Ubuntu 20.4):</b>
+		<blockquote>sha256sum filename.zip</blockquote>
     </div>
 
     <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
