@@ -31,7 +31,7 @@ include_once('utils.php');
             $devices_json = fetch_api_data("https://update.arrowos.net/api/v1/oem/devices/vanilla/");
             if ($devices_json['code'] == "200") {
                 $devices_json = json_decode($devices_json['data'], true);
-                krsort($devices_json);
+                ksort($devices_json, SORT_STRING | SORT_FLAG_CASE);
             } else {
                 exit("Failed to fetch devices!");
             }
