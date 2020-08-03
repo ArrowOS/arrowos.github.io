@@ -44,6 +44,7 @@ include_once('utils.php');
                     <div class="collapsible-body">
                         <ul>
                             <?php
+                            asort($devices);
                             foreach ($devices as $device_codename) {
                             ?>
                                 <li>
