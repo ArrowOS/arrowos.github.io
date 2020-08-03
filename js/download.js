@@ -10,6 +10,8 @@ $(document).ready(function() {
         $('#device-content').load("device.php", 'device=' + prevSelectedDevice, function() {
             $('#device-content').removeClass("scale-transition scale-out");
             $('#device-content').addClass("scale-transition");
+            $('#vanilla-download-mirrors').collapsible();
+            $('#gapps-download-mirrors').collapsible();
         });
     }
 
@@ -20,6 +22,8 @@ $(document).ready(function() {
         $('#device-content').load("device.php", 'device=' + selectedDevice, function() {
             $('#device-content').removeClass("scale-transition scale-out");
             $('#device-content').addClass("scale-transition");
+            $('#vanilla-download-mirrors').collapsible();
+            $('#gapps-download-mirrors').collapsible();
             $(window).scrollTop(0);
         });
     });

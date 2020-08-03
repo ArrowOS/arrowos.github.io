@@ -21,3 +21,16 @@ main {
         padding-left: 0;
     }
 }
+
+*[id*=download-mirrors]>li>.collapsible-header {
+    background-color: #1e1e1e;
+}
+
+*[id*=download-mirrors]>li>.collapsible-body {
+    border-bottom: #1e1e1e;
+}
+
+ul[id*=-mirrors]>li {
+    display: inline;
+    padding: 1px;
+}

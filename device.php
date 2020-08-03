@@ -32,7 +32,7 @@ if (isset($_GET['device'])) {
     <div style="padding-left: 15px;" class="row">
         <div class="card card-theme-color darken-1 col s12 m12 l10 ">
             <div class="card-content white-text">
-                <h5>Codename:</h5> <?php echo ucfirst($device) ?>
+                <h5 id="device-codename" name="<?php echo $device ?>">Codename:</h5> <?php echo ucfirst($device) ?>
                 <h5>Maintained by:</h5> <?php echo ucfirst($device_info['maintainer']) ?>
             </div>
 
@@ -51,11 +51,24 @@ if (isset($_GET['device'])) {
                     <span class="card-title"><b>VANILLA</b> build</span>
                     <p><b>Size:</b> <?php echo number_format((float)$device_info['size'] / 1000000, 2, '.', '') ?> MB</p>
                     <p><b>Type:</b> <?php echo ucfirst($device_info['type']) ?></p>
-                    <p><b>Version:</b> <?php echo $device_info['version'] ?></p>
+                    <p id="vanilla-version"><b>Version:</b> <?php echo $device_info['version'] ?></p>
                     <p><b>Date:</b> <?php echo $device_info['date'] ?></p>
+                    <p id="vanilla-datetime" name="<?php echo $device_info['datetime'] ?>"></p>
                 </div>
                 <div style="border-radius: 8px;" class="card-action">
-                    <a class="primary-text" href="<?php echo $device_info['downloadurl'] ?>"><code><?php echo $device_info['filename'] ?></code></a>
+                    <ul id="vanilla-download-mirrors" class="collapsible popout">
+                        <li>
+                            <a id="vanilla-filename" class="primary-text" href="<?php echo $device_info['downloadurl'] ?>">
+                                <code><?php echo $device_info['filename'] ?></code>
+                            </a>
+                            <div id="fetch-mirrors" name="vanilla" class="collapsible-header">
+                                <i class="material-icons">cloud_download</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <ul id="vanilla-mirrors"></ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -65,11 +78,24 @@ if (isset($_GET['device'])) {
                     <span class="card-title"><b>GAPPS</b> build</span>
                     <p><b>Size:</b> <?php echo number_format((float)$gapps_device_info['size'] / 1000000, 2, '.', '') ?> MB</p>
                     <p><b>Type:</b> <?php echo ucfirst($gapps_device_info['type']) ?></p>
-                    <p><b>Version:</b> <?php echo $gapps_device_info['version'] ?></p>
+                    <p id="gapps-version"><b>Version:</b> <?php echo $gapps_device_info['version'] ?></p>
                     <p><b>Date:</b> <?php echo $gapps_device_info['date'] ?></p>
+                    <p id="gapps-datetime" name="<?php echo $device_info['datetime'] ?>"></p>
                 </div>
                 <div style="border-radius: 8px;" class="card-action">
-                    <a class="primary-text" href="<?php echo $gapps_device_info['downloadurl'] ?>"><code><?php echo $gapps_device_info['filename'] ?></code></a>
+                    <ul id="gapps-download-mirrors" class="collapsible popout">
+                        <li>
+                            <a id="gapps-filename" class="primary-text" href="<?php echo $gapps_device_info['downloadurl'] ?>">
+                                <code><?php echo $gapps_device_info['filename'] ?></code>
+                            </a>
+                            <div id="fetch-mirrors" name="gapps" class="collapsible-header">
+                                <i class="material-icons">cloud_download</i>
+                            </div>
+                            <div class="collapsible-body">
+                                <ul id="gapps-mirrors"></ul>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
