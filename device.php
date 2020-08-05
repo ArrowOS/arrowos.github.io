@@ -54,19 +54,13 @@ if (isset($_GET['device'])) {
                     <p id="vanilla-version"><b>Version:</b> <?php echo $device_info['version'] ?></p>
                     <p><b>Date:</b> <?php echo $device_info['date'] ?></p>
                     <p id="vanilla-datetime" name="<?php echo $device_info['datetime'] ?>"></p>
+                    <p id="vanilla-filename" name="<?php echo $device_info['filename'] ?>"></p>
                 </div>
-                <div style="border-radius: 8px;" class="card-action">
-                    <ul id="vanilla-download-mirrors" class="collapsible popout">
-                        <li>
-                            <a id="vanilla-filename" class="primary-text" href="<?php echo $device_info['downloadurl'] ?>">
-                                <code><?php echo $device_info['filename'] ?></code>
-                            </a>
-                            <div id="fetch-mirrors" name="vanilla" class="collapsible-header">
-                                <i class="material-icons">cloud_download</i>
-                            </div>
-                            <div class="collapsible-body">
-                                <ul id="vanilla-mirrors"></ul>
-                            </div>
+                <div style="border-radius: 10px;" class="card-action">
+                    <ul id="vanilla-download-mirrors" class="collapsible popout z-depth-0">
+                        <li class="card-theme-color center">
+                            <div id="fetch-mirrors" name="vanilla" class="collapsible-header card-theme-color center"><i class="material-icons">file_download</i>DOWNLOAD</div>
+                            <div id="vanilla-mirrors" class="collapsible-body center"></div>
                         </li>
                     </ul>
                 </div>
@@ -80,20 +74,14 @@ if (isset($_GET['device'])) {
                     <p><b>Type:</b> <?php echo ucfirst($gapps_device_info['type']) ?></p>
                     <p id="gapps-version"><b>Version:</b> <?php echo $gapps_device_info['version'] ?></p>
                     <p><b>Date:</b> <?php echo $gapps_device_info['date'] ?></p>
-                    <p id="gapps-datetime" name="<?php echo $device_info['datetime'] ?>"></p>
+                    <p id="gapps-datetime" name="<?php echo $gapps_device_info['datetime'] ?>"></p>
+                    <p id="gapps-filename" name="<?php echo $gapps_device_info['filename'] ?>"></p>
                 </div>
-                <div style="border-radius: 8px;" class="card-action">
-                    <ul id="gapps-download-mirrors" class="collapsible popout">
-                        <li>
-                            <a id="gapps-filename" class="primary-text" href="<?php echo $gapps_device_info['downloadurl'] ?>">
-                                <code><?php echo $gapps_device_info['filename'] ?></code>
-                            </a>
-                            <div id="fetch-mirrors" name="gapps" class="collapsible-header">
-                                <i class="material-icons">cloud_download</i>
-                            </div>
-                            <div class="collapsible-body">
-                                <ul id="gapps-mirrors"></ul>
-                            </div>
+                <div style="border-radius: 10px;" class="card-action">
+                    <ul id="gapps-download-mirrors" class="collapsible popout z-depth-0">
+                        <li class="card-theme-color center">
+                            <div id="fetch-mirrors" name="gapps" class="collapsible-header card-theme-color center"><i class="material-icons">file_download</i>DOWNLOAD</div>
+                            <div id="gapps-mirrors" class="collapsible-body center"></div>
                         </li>
                     </ul>
                 </div>

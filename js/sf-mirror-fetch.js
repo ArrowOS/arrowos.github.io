@@ -25,7 +25,7 @@ $(document).ready(function() {
                 var mirrorsUrl = 'https://sourceforge.net/settings/mirror_choices?projectname=';
                 var projectName = 'arrow-os';
                 var version = $('#' + filetype + '-version').text().split(" ")[1].slice(1);
-                var filename = $('#' + filetype + '-filename').text();
+                var filename = $('#' + filetype + '-filename').attr('name');
                 var filepath = '/arrow-' + version + "/" + deviceCodeName + '/' + filename.trim();
 
                 mirrorsUrl = mirrorsUrl + projectName + '&filename=' + filepath;
@@ -36,7 +36,7 @@ $(document).ready(function() {
                     success: function(data) {
                         var mirrorsData = $.parseJSON(data);
                         $.each(mirrorsData, function(mirrorPlace, mirrorName) {
-                            $('#' + filetype + '-mirrors').append('<li><a class="waves-effect waves-light btn-small" href="https://' + mirrorName + '.dl.sourceforge.net/project' + filepath + '">' + mirrorPlace + '</a></li>');
+                            $('#' + filetype + '-mirrors').append('<a class="waves-effect waves-light btn-small" href="https://' + mirrorName + '.dl.sourceforge.net/project' + filepath + '">' + mirrorPlace + '</a>');
                         });
                         localStorage.setItem(filetype + '_mirrors_' + deviceCodeName, $('#' + filetype + '-mirrors').html());
                         localStorage.setItem(filetype + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
