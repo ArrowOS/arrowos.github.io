@@ -33,8 +33,12 @@ $(document).ready(function() {
                     type: 'POST',
                     data: { 'url': mirrorsUrl },
                     url: 'utils.php',
+                    beforeSend: function() {
+                        $('#' + filetype + '-mirrors').append('<div class="progress"><div class="indeterminate"></div></div>');
+                    },
                     success: function(data) {
                         var mirrorsData = $.parseJSON(data);
+                        $('#' + filetype + '-mirrors').empty();
                         $.each(mirrorsData, function(mirrorPlace, mirrorName) {
                             $('#' + filetype + '-mirrors').append('<a class="waves-effect waves-light btn-small" href="https://' + mirrorName + '.dl.sourceforge.net/project' + filepath + '">' + mirrorPlace + '</a>');
                         });
