@@ -44,7 +44,7 @@ if (isset($_GET['device'])) {
 
 <div class="container">
     <div class="row">
-        <h4 class="primary-color" style="padding-bottom: 20px;">Downloads</h4>
+        <h4 id="downloads-section" class="primary-color" style="padding-bottom: 20px;">Downloads</h4>
         <div class="col s12 m6 l6">
             <div class="card card-theme-color darken-1">
                 <div class="card-content white-text">
@@ -56,11 +56,18 @@ if (isset($_GET['device'])) {
                     <p id="vanilla-datetime" name="<?php echo $device_info['datetime'] ?>"></p>
                     <p id="vanilla-filename" name="<?php echo $device_info['filename'] ?>"></p>
                 </div>
-                <div style="border-radius: 10px;" class="card-action">
-                    <ul id="vanilla-download-mirrors" class="collapsible popout z-depth-0">
-                        <li class="card-theme-color center">
-                            <div id="fetch-mirrors" name="vanilla" class="collapsible-header card-theme-color center"><i class="material-icons">file_download</i>DOWNLOAD</div>
-                            <div id="vanilla-mirrors" class="collapsible-body center"></div>
+                <div style="border-radius: 10px;" class="card-action center">
+                    <ul>
+                        <li>
+                            <a class="btn-flat">
+                                <div id="fetch-mirrors" name="vanilla" class="card-theme-color center">
+                                    <i class="material-icons">file_download</i>
+                                    DOWNLOAD
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div id="vanilla-fetch-progress" class="center"></div>
                         </li>
                     </ul>
                 </div>
@@ -77,11 +84,18 @@ if (isset($_GET['device'])) {
                     <p id="gapps-datetime" name="<?php echo $gapps_device_info['datetime'] ?>"></p>
                     <p id="gapps-filename" name="<?php echo $gapps_device_info['filename'] ?>"></p>
                 </div>
-                <div style="border-radius: 10px;" class="card-action">
-                    <ul id="gapps-download-mirrors" class="collapsible popout z-depth-0">
-                        <li class="card-theme-color center">
-                            <div id="fetch-mirrors" name="gapps" class="collapsible-header card-theme-color center"><i class="material-icons">file_download</i>DOWNLOAD</div>
-                            <div id="gapps-mirrors" class="collapsible-body center"></div>
+                <div style="border-radius: 10px;" class="card-action center">
+                    <ul>
+                        <li>
+                            <a class="btn-flat">
+                                <div id="fetch-mirrors" name="gapps" class="card-theme-color center">
+                                    <i class="material-icons">file_download</i>
+                                    DOWNLOAD
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div id="gapps-fetch-progress" class="center"></div>
                         </li>
                     </ul>
                 </div>

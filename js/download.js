@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    $('.navbar-fixed').hide();
     $('.collapsible').collapsible();
     $('.sidenav').sidenav();
 
@@ -10,20 +11,17 @@ $(document).ready(function() {
         $('#device-content').load("device.php", 'device=' + prevSelectedDevice, function() {
             $('#device-content').removeClass("scale-transition scale-out");
             $('#device-content').addClass("scale-transition");
-            $('#vanilla-download-mirrors').collapsible();
-            $('#gapps-download-mirrors').collapsible();
         });
     }
 
     $('body').on('click', '#deviceLabel', function() {
+        $('#device-page-back').trigger('click');
         $('#device-content').addClass("scale-transition scale-out");
         selectedDevice = $(this).text();
         localStorage.setItem("device", selectedDevice);
         $('#device-content').load("device.php", 'device=' + selectedDevice, function() {
             $('#device-content').removeClass("scale-transition scale-out");
             $('#device-content').addClass("scale-transition");
-            $('#vanilla-download-mirrors').collapsible();
-            $('#gapps-download-mirrors').collapsible();
             $(window).scrollTop(0);
         });
     });

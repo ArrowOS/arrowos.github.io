@@ -1,53 +1,75 @@
 $(document).ready(function() {
-    var deviceCodeName = localStorage.device;
-    var open_checks = {};
-    open_checks[deviceCodeName + '_vanilla'] = 0;
-    open_checks[deviceCodeName + '_gapps'] = 0;
-
+    var forceFetch = 0;
+    var filetype;
     $('body').on('click', '#fetch-mirrors', function() {
-        var filetype = $(this).attr('name');
+        filetype = $(this).attr('name');
+        var deviceCodeName = $('#device-codename').attr('name');
         var datetime = $('#' + filetype + '-datetime').attr('name');
+        var mirrorsUrl = 'https://sourceforge.net/settings/mirror_choices?projectname=';
+        var projectName = 'arrow-os';
+        var version = $('#' + filetype + '-version').text().split(" ")[1].slice(1);
+        var filename = $('#' + filetype + '-filename').attr('name');
+        var filepath = '/arrow-' + version + "/" + deviceCodeName + '/' + filename.trim();
 
-        /* Wrote this dirty hack late night, not sure anymore how or what it does but do not remove it */
-        if (deviceCodeName != $('#device-codename').attr('name')) {
-            deviceCodeName = $('#device-codename').attr('name');
-            open_checks[deviceCodeName + '_vanilla'] = 0;
-            open_checks[deviceCodeName + '_gapps'] = 0;
-        }
+        mirrorsUrl = mirrorsUrl + projectName + '&filename=' + filepath;
 
-        if (open_checks[deviceCodeName + '_' + filetype] === 0) {
-            if (localStorage.getItem(filetype + '_filedate_' + deviceCodeName) === filetype + '-' + datetime) {
-                if (localStorage.getItem(filetype + '_mirrors_' + deviceCodeName) != null) {
-                    $('#' + filetype + '-mirrors').append(localStorage.getItem(filetype + '_mirrors_' + deviceCodeName));
-                    open_checks[deviceCodeName + '_' + filetype] = 1;
-                }
-            } else {
-                var mirrorsUrl = 'https://sourceforge.net/settings/mirror_choices?projectname=';
-                var projectName = 'arrow-os';
-                var version = $('#' + filetype + '-version').text().split(" ")[1].slice(1);
-                var filename = $('#' + filetype + '-filename').attr('name');
-                var filepath = '/arrow-' + version + "/" + deviceCodeName + '/' + filename.trim();
-
-                mirrorsUrl = mirrorsUrl + projectName + '&filename=' + filepath;
-                $.ajax({
-                    type: 'POST',
-                    data: { 'url': mirrorsUrl },
-                    url: 'utils.php',
-                    beforeSend: function() {
-                        $('#' + filetype + '-mirrors').append('<div class="progress"><div class="indeterminate"></div></div>');
-                    },
-                    success: function(data) {
-                        var mirrorsData = $.parseJSON(data);
-                        $('#' + filetype + '-mirrors').empty();
-                        $.each(mirrorsData, function(mirrorPlace, mirrorName) {
-                            $('#' + filetype + '-mirrors').append('<a class="waves-effect waves-light btn-small" href="https://' + mirrorName + '.dl.sourceforge.net/project' + filepath + '">' + mirrorPlace + '</a>');
-                        });
-                        localStorage.setItem(filetype + '_mirrors_' + deviceCodeName, $('#' + filetype + '-mirrors').html());
-                        localStorage.setItem(filetype + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
-                        open_checks[deviceCodeName + '_' + filetype] = 1;
-                    }
+        if (localStorage.getItem(filetype + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
+            if (localStorage.getItem(filetype + '_mirrors_' + deviceCodeName) != null) {
+                $('#mirrors-content').load("mirror.html", function() {
+                    $('#device-content').hide();
+                    $('.navbar-fixed').show();
+                    $('#filename-title').append(filename);
+                    $('#display-mirrors').append(localStorage.getItem(filetype + '_mirrors_' + deviceCodeName));
                 });
             }
+        } else {
+            $.ajax({
+                type: 'POST',
+                data: { 'url': mirrorsUrl },
+                url: 'utils.php',
+                beforeSend: function() {
+                    $('#' + filetype + '-fetch-progress').append('<div class="progress"><div class="indeterminate"></div></div>');
+                },
+                success: function(data) {
+                    var mirrorsData = $.parseJSON(data);
+                    $('#' + filetype + '-fetch-progress').empty();
+                    $('#mirrors-content').load("mirror.html", function() {
+                        $('#device-content').hide();
+                        $('.navbar-fixed').show();
+                        $('#filename-title').append(filename);
+                        $.each(mirrorsData, function(mirrorPlace, mirrorName) {
+                            $('#display-mirrors').append(
+                                '<div class="chip">' +
+                                '<i class="close material-icons">cloud</i>' +
+                                '<a target="_blank" style="color: #141414;" href="https://' + mirrorName + '.dl.sourceforge.net/project/' + projectName + filepath + '">' + mirrorPlace + '</a>' +
+                                '</div>'
+                            );
+                        });
+                        localStorage.setItem(filetype + '_mirrors_' + deviceCodeName, $('#display-mirrors').html());
+                        localStorage.setItem(filetype + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
+                        forceFetch = 0;
+                    });
+                }
+            });
         }
+    });
+
+    $('body').on('click', '#device-page-back', function() {
+        $('.navbar-fixed').hide();
+        $('#device-content').show();
+        $('#mirrors-content').empty();
+
+        if ($('#downloads-section').html() != null) {
+            $('html, body').animate({
+                scrollTop: $("#downloads-section").offset().top
+            }, 500);
+        }
+    });
+
+    $('body').on('click', '#mirrors-refresh', function() {
+        forceFetch = 1;
+        $('#display-mirrors').empty();
+        $('#display-mirrors').append('<div class="progress"><div class="indeterminate"></div></div>');
+        $("#fetch-mirrors[name='" + filetype + "']").trigger('click');
     });
 });

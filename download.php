@@ -25,6 +25,23 @@ include_once('utils.php');
         </div>
     </nav>
 
+    <div class="navbar-fixed">
+        <nav class="nav-background black-text z-depth-0">
+            <div class="nav-wrapper container">
+                <div class="nav-wrapper ">
+                    <ul class="right">
+                        <li class="tab col s3">
+                            <a title="Refresh mirrors" id="mirrors-refresh" class="main-font white-text"> <i class="close material-icons">refresh</i></a>
+                        </li>
+                        <li class="tab col s3">
+                            <a title="Close" id="device-page-back" class="main-font white-text"> <i class="close material-icons">close</i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
     <ul id="slide-out" class="sidenav sidenav-fixed collapsible grey lighten-2">
         <ul class="collapsible collapsible-accordion">
             <?php
@@ -60,27 +77,28 @@ include_once('utils.php');
 
     <main>
         <div id="device-content"></div>
+        <div id="mirrors-content"></div>
     </main>
 
 
     <footer class="page-footer card-theme-color">
-            <div class="container">
-                <div class="center">
-                    <a class="btn-floating btn-small waves-effect waves-light white" href="https://t.me/arrowos"><i class="mdi mdi-telegram grey-text text-darken-3"></i></a>
-                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://github.com/arrowos"><i class="mdi mdi-github grey-text text-darken-3"></i></a>
-                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://review.arrowos.net"><i class="mdi mdi-git grey-text text-darken-3"></i></a>
-                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://crowdin.com/project/arrowos"><i class="mdi mdi-translate grey-text text-darken-3"></i></a>
-                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://stats.arrowos.net"><i class="mdi mdi-chart-box-outline grey-text text-darken-3"></i></a>
-                    <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://blog.arrowos.net"><i class="mdi mdi-blogger grey-text text-darken-3"></i></a>
-                </div>
-                <br>
+        <div class="container">
+            <div class="center">
+                <a class="btn-floating btn-small waves-effect waves-light white" href="https://t.me/arrowos"><i class="mdi mdi-telegram grey-text text-darken-3"></i></a>
+                <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://github.com/arrowos"><i class="mdi mdi-github grey-text text-darken-3"></i></a>
+                <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://review.arrowos.net"><i class="mdi mdi-git grey-text text-darken-3"></i></a>
+                <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://crowdin.com/project/arrowos"><i class="mdi mdi-translate grey-text text-darken-3"></i></a>
+                <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://stats.arrowos.net"><i class="mdi mdi-chart-box-outline grey-text text-darken-3"></i></a>
+                <a class="btn-floating btn-small waves-effect waves-light white footer-button" href="https://blog.arrowos.net"><i class="mdi mdi-blogger grey-text text-darken-3"></i></a>
             </div>
-            <div class="footer-copyright">
-                <div class="container footer-center">
-                    Designed by <b><a style="font-size: medium;" class="white-text" href="https://t.me/harshv23/">HarshV23
-          </a></b><br>Copyright © 2020 ArrowOS<br><br>
-                </div>
+            <br>
+        </div>
+        <div class="footer-copyright">
+            <div class="container footer-center">
+                Designed by <b><a style="font-size: medium;" class="white-text" href="https://t.me/harshv23/">HarshV23
+                    </a></b><br>Copyright © 2020 ArrowOS<br><br>
             </div>
+        </div>
     </footer>
 
 

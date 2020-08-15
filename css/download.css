@@ -21,17 +21,3 @@ main {
         padding-left: 0;
     }
 }
-
-*[id*=download-mirrors] {
-    border-width: 0px;
-    margin-top: -10px;
-    margin-bottom: -10px;
-}
-
-ul[id*=download-mirrors]>li>div[id*=-mirrors].collapsible-body {
-    border-width: 0px;
-}
-
-[id*=download-mirrors]>li {
-    display: inline;
-}
