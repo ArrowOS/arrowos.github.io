@@ -37,6 +37,15 @@ $(document).ready(function() {
                         $('#device-content').hide();
                         $('.navbar-fixed').show();
                         $('#filename-title').append(filename);
+
+                        // Always show the master mirror
+                        $('#display-mirrors').append(
+                            '<div class="chip">' +
+                            '<i class="close material-icons">cloud</i>' +
+                            '<a target="_blank" style="color: #141414;" href="https://master.dl.sourceforge.net/project/' + projectName + filepath + '">MASTER</a>' +
+                            '</div>'
+                        );
+
                         $.each(mirrorsData, function(mirrorPlace, mirrorName) {
                             $('#display-mirrors').append(
                                 '<div class="chip">' +
