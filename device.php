@@ -125,11 +125,13 @@ if (isset($_GET['device'])) {
             </tbody>
         </table>
     </div>
-    <strong>You can check sha256sum via the following command:</strong><br>
+    <strong>You can check sha256sum via the following command examples:</strong><br>
     <b>Windows (Powershell):</b>
-    <blockquote class="block">Get-filehash filename.zip</blockquote>
+    <blockquote class="block">Get-filehash <?php echo $gapps_device_info['filename'] ?></blockquote>
     <b>Linux (Ubuntu 20.4):</b>
-    <blockquote class="block">sha256sum filename.zip</blockquote>
+    <blockquote class="block">sha256sum <?php echo $device_info['filename'] ?></blockquote>
+	<br>
+	<a href="https://blog.arrowos.net/posts/checking-build-integrity">You can also check our blog post for the same.</a>
 </div>
 
 <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
