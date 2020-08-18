@@ -150,6 +150,7 @@ if (isset($_GET['device'])) {
                     </p>
                 </div>
             </div>
+            <a id="source-changelog" class="btn-small card card-theme-color" href="changelog.php"><i class="material-icons left">reorder</i>source changelog</a>
         </div>
     </div>
 </div>
