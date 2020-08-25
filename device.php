@@ -28,7 +28,8 @@ if (isset($_GET['device'])) {
 </div>
 
 <div style="padding-top: 50px;" class="container">
-    <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model'])) ?></h4>
+    <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model']));
+                                                            if (!$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
     <div style="padding-left: 15px;" class="row">
         <div class="card card-theme-color darken-1 col s12 m12 l10 ">
             <div class="card-content white-text">
