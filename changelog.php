@@ -41,6 +41,7 @@
                                         <div class="collapsible-body">
                                             <ul style="border-width: 0px;" class="collapsible z-depth-0">
                                                 <?php
+                                                krsort($dates);
                                                 foreach ($dates as $date => $log) {
                                                 ?>
                                                     <li <?php if ($is_first) { ?> class="active" <?php }
