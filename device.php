@@ -1,10 +1,11 @@
 <?php
+include_once('./config/constants.php');
 include_once('utils.php');
 
 if (isset($_GET['device'])) {
     $device = $_GET['device'];
-    $device_info = fetch_api_data("https://update.arrowos.net/api/v1/info/{$device}/vanilla/");
-    $gapps_device_info = fetch_api_data("https://update.arrowos.net/api/v1/info/{$device}/gapps/");
+    $device_info = fetch_api_data(str_replace('{device}', $device, $API_URL_CALLS['vanilla_device_info']));
+    $gapps_device_info = fetch_api_data(str_replace('{device}', $device, $API_URL_CALLS['gapps_device_info']));
 
     if ($device_info['code'] == "200" && $gapps_device_info['code'] == "200") {
         $device_info = json_decode($device_info['data'], true);

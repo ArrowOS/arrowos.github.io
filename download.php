@@ -1,4 +1,5 @@
 <?php
+include_once('./config/constants.php');
 include_once('utils.php');
 ?>
 <!DOCTYPE html>
@@ -45,7 +46,7 @@ include_once('utils.php');
     <ul id="slide-out" class="sidenav sidenav-fixed collapsible grey lighten-2">
         <ul class="collapsible collapsible-accordion">
             <?php
-            $devices_json = fetch_api_data("https://update.arrowos.net/api/v1/oem/devices/vanilla/");
+            $devices_json = fetch_api_data($API_URL_CALLS['oem_devices_list']);
             if ($devices_json['code'] == "200") {
                 $devices_json = json_decode($devices_json['data'], true);
                 ksort($devices_json, SORT_STRING | SORT_FLAG_CASE);

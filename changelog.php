@@ -30,9 +30,10 @@
                         <div class="card-content white-text">
                             <ul style="border-width: 0px;" class="collapsible z-depth-0">
                                 <?php
+                                include_once("./config/constants.php");
                                 require_once("utils.php");
                                 $is_first = true;
-                                $changelogs = fetch_api_data("https://update.arrowos.net/api/v1/source/changelog")['data'];
+                                $changelogs = fetch_api_data($API_URL_CALLS['source_changelog'])['data'];
                                 $changelogs = json_decode($changelogs, true);
                                 foreach ($changelogs as $version => $dates) {
                                 ?>
