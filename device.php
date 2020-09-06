@@ -29,15 +29,27 @@ if (isset($_GET['device'])) {
 </div>
 
 <div style="padding-top: 50px;" class="container">
-    <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model']));
-                                                            if (!$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
-    <div style="padding-left: 15px;" class="row">
-        <div class="card card-theme-color darken-1 col s12 m12 l10 ">
-            <div class="card-content white-text">
-                <h5 id="device-codename" name="<?php echo $device ?>">Codename:</h5> <?php echo ucfirst($device) ?>
-                <h5>Maintained by:</h5> <?php echo ucfirst($device_info['maintainer']) ?>
-            </div>
+    <div class="row">
+        <div class="row">
+            <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model']));
+                                                                    if (!$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
 
+            <div class="input-field col s12 m4 l4">
+                <select>
+                    <option value="1" selected>Arrow 10</option>
+                    <option value="2">Arrow 9</option>
+                </select>
+                <label">Select version</label>
+            </div>
+        </div>
+        <div style="padding-left: 15px;" class="row">
+            <div class="card card-theme-color darken-1 col s12 m12 l10 ">
+                <div class="card-content white-text">
+                    <h5 id="device-codename" name="<?php echo $device ?>">Codename:</h5> <?php echo ucfirst($device) ?>
+                    <h5>Maintained by:</h5> <?php echo ucfirst($device_info['maintainer']) ?>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -46,7 +58,17 @@ if (isset($_GET['device'])) {
 
 <div class="container">
     <div class="row">
-        <h4 id="downloads-section" class="primary-color" style="padding-bottom: 20px;">Downloads</h4>
+        <div class="row">
+            <h4 id="downloads-section" class="primary-color" style="padding-bottom: 20px;">Downloads</h4>
+
+            <div class="input-field col s12 m4 l4">
+                <select>
+                    <option value="1" selected>Stable</option>
+                    <option value="2">Beta</option>
+                </select>
+                <label>Select Build</label>
+            </div>
+        </div>
         <div class="col s12 m6 l6">
             <div class="card card-theme-color darken-1">
                 <div class="card-content white-text">
@@ -132,8 +154,8 @@ if (isset($_GET['device'])) {
     <blockquote class="block">Get-filehash <?php echo $gapps_device_info['filename'] ?></blockquote>
     <b>Linux (Ubuntu 20.4):</b>
     <blockquote class="block">sha256sum <?php echo $device_info['filename'] ?></blockquote>
-	<br>
-	<a href="https://blog.arrowos.net/posts/checking-build-integrity">You can also check our blog post for the same.</a>
+    <br>
+    <a href="https://blog.arrowos.net/posts/checking-build-integrity">You can also check our blog post for the same.</a>
 </div>
 
 <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>

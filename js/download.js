@@ -9,6 +9,7 @@ $(document).ready(function() {
     } else {
         $('#device-content').addClass("scale-transition scale-out");
         $('#device-content').load("device.php", 'device=' + prevSelectedDevice, function() {
+            $('select').formSelect();
             $('#device-content').removeClass("scale-transition scale-out");
             $('#device-content').addClass("scale-transition");
         });
@@ -20,6 +21,7 @@ $(document).ready(function() {
         selectedDevice = $(this).text();
         localStorage.setItem("device", selectedDevice);
         $('#device-content').load("device.php", 'device=' + selectedDevice, function() {
+            $('select').formSelect();
             $('#device-content').removeClass("scale-transition scale-out");
             $('#device-content').addClass("scale-transition");
             $(window).scrollTop(0);
