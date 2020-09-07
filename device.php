@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
+
 include_once('./config/constants.php');
 include_once('utils.php');
 
@@ -24,8 +26,6 @@ if (
                     $API_URL_CALLS['device_info']
                 )
             );
-            $gapps_device_info['code'] = "200";
-            $gapps_device_info['data'] = "";
             break;
         }
 
@@ -46,14 +46,12 @@ if (
         break;
     } while (0);
 
-    if ($device_info['code'] == "200" && $gapps_device_info['code'] == "200") {
+    if ($device_info['code'] == "200" || $gapps_device_info['code'] == "200") {
         $device_info = json_decode($device_info['data'], true);
         $gapps_device_info = json_decode($gapps_device_info['data'], true);
 
         $device_info = $device_info['response'][0];
         $gapps_device_info = $gapps_device_info['response'][0];
-
-        if (!isset($device_info) && !isset($gapps_device_info)) http_response_code(404);
     } else {
         http_response_code(404);
     }
@@ -110,7 +108,7 @@ if (
             <div class="input-field col s12 m4 l4">
                 <select id="variant-selector" selected="selected">
                     <?php foreach ($VARIANTS as $variant) { ?>
-                        <option value="<?php echo strtolower(str_replace('*', '', $variant)) ?>" <?php if (strpos($variant, '*')) echo "selected"; ?>><?php echo ucfirst($variant) ?></option>
+                        <option value="<?php echo (strtolower(str_replace('*', '', $variant)) == "beta") ? "unofficial" : strtolower(str_replace('*', '', $variant)) ?>" <?php if (strpos($variant, '*')) echo "selected"; ?>><?php echo ucfirst($variant) ?></option>
                     <?php } ?>
                 </select>
                 <label>Select Build</label>
