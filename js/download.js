@@ -24,6 +24,7 @@ $(document).ready(function() {
         supportedVersions = $(this).attr('name').split(',');
         deviceVariant = (supportedVersions[0].includes('community')) ? "community" : "official";
         deviceVersion = (supportedVersions.length >= 1) ? supportedVersions[0] : null;
+        deviceVersion = localStorage.getItem(selectedDevice + '_version') || deviceVersion;
         localStorage.setItem("device", selectedDevice);
         supportedVersions = JSON.stringify(supportedVersions);
         loadDevicePage(selectedDevice, deviceVariant, deviceVersion, supportedVersions);
