@@ -6,13 +6,24 @@ $(document).ready(function() {
         var deviceCodeName = $('#device-codename').attr('name');
         var datetime = $('#' + filetype + '-datetime').attr('name');
         var mirrorsUrl = 'https://sourceforge.net/settings/mirror_choices?projectname=';
-        var projectName = 'arrow-os';
         var version = $('#' + filetype + '-version').text().split(" ")[1].slice(1);
         // Hardcode for legacy fallback version
         version = version.includes('9') ? '9.x' : version;
         var filename = $('#' + filetype + '-filename').attr('name');
         var filepath = '/arrow-' + version + "/" + deviceCodeName + '/' + filename.trim();
 
+        var variant = localStorage.getItem(deviceCodeName + '_variant');
+        var selectedVersion = localStorage.getItem(deviceCodeName + '_version');
+        if (variant == 'official') {
+            projectName = 'arrow-os';
+        } else if (variant == 'unofficial') {
+            projectName = 'arrowos-beta';
+        } else if (selectedVersion.includes('community') && variant == 'official') {
+            projectName = 'arrowos-community';
+        } else if (selectedVersion.includes('community') && variant == 'unofficial') {
+            projectName = 'arrowos-beta'
+            filepath = '/arrow-community' + filepath;
+        }
         mirrorsUrl = mirrorsUrl + projectName + '&filename=' + filepath;
 
         if (localStorage.getItem(filetype + version + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
