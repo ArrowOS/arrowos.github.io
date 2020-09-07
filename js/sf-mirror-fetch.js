@@ -8,18 +8,20 @@ $(document).ready(function() {
         var mirrorsUrl = 'https://sourceforge.net/settings/mirror_choices?projectname=';
         var projectName = 'arrow-os';
         var version = $('#' + filetype + '-version').text().split(" ")[1].slice(1);
+        // Hardcode for legacy fallback version
+        version = version.includes('9') ? '9.x' : version;
         var filename = $('#' + filetype + '-filename').attr('name');
         var filepath = '/arrow-' + version + "/" + deviceCodeName + '/' + filename.trim();
 
         mirrorsUrl = mirrorsUrl + projectName + '&filename=' + filepath;
 
-        if (localStorage.getItem(filetype + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
-            if (localStorage.getItem(filetype + '_mirrors_' + deviceCodeName) != null) {
+        if (localStorage.getItem(filetype + version + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
+            if (localStorage.getItem(filetype + version + '_mirrors_' + deviceCodeName) != null) {
                 $('#mirrors-content').load("mirror.html", function() {
                     $('#device-content').hide();
                     $('.navbar-fixed').show();
                     $('#filename-title').append(filename);
-                    $('#display-mirrors').append(localStorage.getItem(filetype + '_mirrors_' + deviceCodeName));
+                    $('#display-mirrors').append(localStorage.getItem(filetype + version + '_mirrors_' + deviceCodeName));
                 });
             }
         } else {
@@ -54,8 +56,8 @@ $(document).ready(function() {
                                 '</div>'
                             );
                         });
-                        localStorage.setItem(filetype + '_mirrors_' + deviceCodeName, $('#display-mirrors').html());
-                        localStorage.setItem(filetype + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
+                        localStorage.setItem(filetype + version + '_mirrors_' + deviceCodeName, $('#display-mirrors').html());
+                        localStorage.setItem(filetype + version + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
                         forceFetch = 0;
                     });
                 }

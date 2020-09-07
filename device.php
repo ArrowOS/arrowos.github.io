@@ -2,24 +2,63 @@
 include_once('./config/constants.php');
 include_once('utils.php');
 
-if (isset($_GET['device'])) {
-    $device = $_GET['device'];
-    $device_info = fetch_api_data(str_replace('{device}', $device, $API_URL_CALLS['vanilla_device_info']));
-    $gapps_device_info = fetch_api_data(str_replace('{device}', $device, $API_URL_CALLS['gapps_device_info']));
+if (
+    isset($_POST['device']) &&
+    isset($_POST['deviceVariant']) &&
+    isset($_POST['deviceVersion']) &&
+    isset($_POST['supportedVersions'])
+) {
+
+    $device = $_POST['device'];
+    $deviceVariant = $_POST['deviceVariant'];
+    $deviceVersion = $_POST['deviceVersion'];
+    $supportedVersions = json_decode($_POST['supportedVersions']);
+
+    do {
+        // Fallback legacy api call for arrow-9.x
+        if ($deviceVersion == "arrow-9.x") {
+            $device_info = fetch_api_data(
+                str_replace(
+                    array('{device}', '{variant}', '{version}', '{zipvariant}'),
+                    array($device, $deviceVariant, $deviceVersion, 'pie'),
+                    $API_URL_CALLS['device_info']
+                )
+            );
+            $gapps_device_info['code'] = "200";
+            $gapps_device_info['data'] = "";
+            break;
+        }
+
+        $device_info = fetch_api_data(
+            str_replace(
+                array('{device}', '{variant}', '{version}', '{zipvariant}'),
+                array($device, $deviceVariant, $deviceVersion, 'vanilla'),
+                $API_URL_CALLS['device_info']
+            )
+        );
+        $gapps_device_info = fetch_api_data(
+            str_replace(
+                array('{device}', '{variant}', '{version}', '{zipvariant}'),
+                array($device, $deviceVariant, $deviceVersion, 'gapps'),
+                $API_URL_CALLS['device_info']
+            )
+        );
+        break;
+    } while (0);
 
     if ($device_info['code'] == "200" && $gapps_device_info['code'] == "200") {
         $device_info = json_decode($device_info['data'], true);
         $gapps_device_info = json_decode($gapps_device_info['data'], true);
 
-        if (isset($device_info) && isset($gapps_device_info)) {
-            $device_info = $device_info['response'][0];
-            $gapps_device_info = $gapps_device_info['response'][0];
-        }
+        $device_info = $device_info['response'][0];
+        $gapps_device_info = $gapps_device_info['response'][0];
+
+        if (!isset($device_info) && !isset($gapps_device_info)) http_response_code(404);
     } else {
-        exit("Failed to fetch device info!");
+        http_response_code(404);
     }
 } else {
-    exit();
+    exit("Something went wrong!");
 }
 ?>
 <div class="center hide-on-large-only">
@@ -35,9 +74,16 @@ if (isset($_GET['device'])) {
                                                                     if (!$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
 
             <div class="input-field col s12 m4 l4">
-                <select>
-                    <option value="1" selected>Arrow 10</option>
-                    <option value="2">Arrow 9</option>
+                <select id="version-selector" selected="selected">
+                    <?php foreach ($VERSIONS as $version) { ?>
+                        <option value="<?php echo strtolower(str_replace('*', '', $version)); ?>" <?php if (strpos($version, '*')) {
+                                                                                                        if (in_array(strtolower(str_replace('*', '', $version)), $supportedVersions)) {
+                                                                                                            echo "selected";
+                                                                                                        }
+                                                                                                    } ?> <?php if (!in_array(strtolower(str_replace('*', '', $version)), $supportedVersions)) {
+                                                                                                                echo "disabled";
+                                                                                                            } ?>><?php echo ucfirst($version); ?></option>
+                    <?php } ?>
                 </select>
                 <label">Select version</label>
             </div>
@@ -62,9 +108,10 @@ if (isset($_GET['device'])) {
             <h4 id="downloads-section" class="primary-color" style="padding-bottom: 20px;">Downloads</h4>
 
             <div class="input-field col s12 m4 l4">
-                <select>
-                    <option value="1" selected>Stable</option>
-                    <option value="2">Beta</option>
+                <select id="variant-selector" selected="selected">
+                    <?php foreach ($VARIANTS as $variant) { ?>
+                        <option value="<?php echo strtolower(str_replace('*', '', $variant)) ?>" <?php if (strpos($variant, '*')) echo "selected"; ?>><?php echo ucfirst($variant) ?></option>
+                    <?php } ?>
                 </select>
                 <label>Select Build</label>
             </div>
@@ -97,34 +144,36 @@ if (isset($_GET['device'])) {
                 </div>
             </div>
         </div>
-        <div class="col s12 m6 l6">
-            <div class="card card-theme-color">
-                <div class="card-content white-text">
-                    <span class="card-title"><b>GAPPS</b> build</span>
-                    <p><b>Size:</b> <?php echo number_format((float)$gapps_device_info['size'] / 1000000, 2, '.', '') ?> MB</p>
-                    <p><b>Type:</b> <?php echo ucfirst($gapps_device_info['type']) ?></p>
-                    <p id="gapps-version"><b>Version:</b> <?php echo $gapps_device_info['version'] ?></p>
-                    <p><b>Date:</b> <?php echo $gapps_device_info['date'] ?></p>
-                    <p id="gapps-datetime" name="<?php echo $gapps_device_info['datetime'] ?>"></p>
-                    <p id="gapps-filename" name="<?php echo $gapps_device_info['filename'] ?>"></p>
-                </div>
-                <div style="border-radius: 10px;" class="card-action center">
-                    <ul>
-                        <li>
-                            <a class="btn-flat">
-                                <div id="fetch-mirrors" name="gapps" class="card-theme-color center">
-                                    <i class="material-icons">file_download</i>
-                                    DOWNLOAD
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div id="gapps-fetch-progress" class="center"></div>
-                        </li>
-                    </ul>
+        <?php if (isset($gapps_device_info)) { ?>
+            <div class="col s12 m6 l6">
+                <div class="card card-theme-color">
+                    <div class="card-content white-text">
+                        <span class="card-title"><b>GAPPS</b> build</span>
+                        <p><b>Size:</b> <?php echo number_format((float)$gapps_device_info['size'] / 1000000, 2, '.', '') ?> MB</p>
+                        <p><b>Type:</b> <?php echo ucfirst($gapps_device_info['type']) ?></p>
+                        <p id="gapps-version"><b>Version:</b> <?php echo $gapps_device_info['version'] ?></p>
+                        <p><b>Date:</b> <?php echo $gapps_device_info['date'] ?></p>
+                        <p id="gapps-datetime" name="<?php echo $gapps_device_info['datetime'] ?>"></p>
+                        <p id="gapps-filename" name="<?php echo $gapps_device_info['filename'] ?>"></p>
+                    </div>
+                    <div style="border-radius: 10px;" class="card-action center">
+                        <ul>
+                            <li>
+                                <a class="btn-flat">
+                                    <div id="fetch-mirrors" name="gapps" class="card-theme-color center">
+                                        <i class="material-icons">file_download</i>
+                                        DOWNLOAD
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div id="gapps-fetch-progress" class="center"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
     </div>
 </div>
 
@@ -141,12 +190,14 @@ if (isset($_GET['device'])) {
                     <td><?php echo $device_info['sha256'] ?></td>
                 </tr>
             </tbody>
-            <tbody>
-                <tr>
-                    <td><b>GAPPS:</b></td>
-                    <td><?php echo $gapps_device_info['sha256'] ?></td>
-                </tr>
-            </tbody>
+            <?php if (isset($gapps_device_info)) { ?>
+                <tbody>
+                    <tr>
+                        <td><b>GAPPS:</b></td>
+                        <td><?php echo $gapps_device_info['sha256'] ?></td>
+                    </tr>
+                </tbody>
+            <?php } ?>
         </table>
     </div>
     <strong>You can check sha256sum via the following command examples:</strong><br>
@@ -195,3 +246,4 @@ if (isset($_GET['device'])) {
         </div>
     </div>
 </div>
+<script src="js/device.js"></script>

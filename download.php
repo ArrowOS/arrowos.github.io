@@ -47,8 +47,12 @@ include_once('utils.php');
         <ul class="collapsible collapsible-accordion">
             <?php
             $devices_json = fetch_api_data($API_URL_CALLS['oem_devices_list']);
-            if ($devices_json['code'] == "200") {
+            $devices_version = fetch_api_data($API_URL_CALLS['devices_version_list']);
+
+            if ($devices_json['code'] == "200" && $devices_version['code'] == "200") {
                 $devices_json = json_decode($devices_json['data'], true);
+                $devices_version = json_decode($devices_version['data'], true);
+
                 ksort($devices_json, SORT_STRING | SORT_FLAG_CASE);
             } else {
                 exit("Failed to fetch devices!");
@@ -66,7 +70,8 @@ include_once('utils.php');
                             foreach ($devices as $device_codename) {
                             ?>
                                 <li>
-                                    <a class="sidenav-close" id="deviceLabel"><?php echo $device_codename ?></a>
+                                    <?php $versions = get_device_versions($devices_version, $device_codename) ?>
+                                    <a href="javascript:void(0);" class="sidenav-close" id="deviceLabel" name="<?php echo $versions ?>"><?php echo $device_codename ?></a>
                                 </li>
                             <?php } ?>
                         </ul>
