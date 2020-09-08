@@ -25,7 +25,7 @@ $(document).ready(function() {
     })
 
     function reloadDP() {
-        loadDevicePage(dpData.device, dpData.variantSelected, dpData.versionSelected, supportedVersions);
+        loadDevicePage(dpData.device, dpData.variantSelected, dpData.versionSelected, supportedVersions, supportedVariants);
     }
 
 });

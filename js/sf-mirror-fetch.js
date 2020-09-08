@@ -13,26 +13,25 @@ $(document).ready(function() {
         var filepath = '/arrow-' + version + "/" + deviceCodeName + '/' + filename.trim();
 
         var variant = localStorage.getItem(deviceCodeName + '_variant');
-        var selectedVersion = localStorage.getItem(deviceCodeName + '_version');
         if (variant == 'official') {
             projectName = 'arrow-os';
         } else if (variant == 'unofficial') {
             projectName = 'arrowos-beta';
-        } else if (selectedVersion.includes('community') && variant == 'official') {
+        } else if (variant == 'community') {
             projectName = 'arrowos-community';
-        } else if (selectedVersion.includes('community') && variant == 'unofficial') {
+        } else if (variant == 'community_unofficial') {
             projectName = 'arrowos-beta'
             filepath = '/arrow-community' + filepath;
         }
         mirrorsUrl = mirrorsUrl + projectName + '&filename=' + filepath;
 
-        if (localStorage.getItem(filetype + version + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
-            if (localStorage.getItem(filetype + version + '_mirrors_' + deviceCodeName) != null) {
+        if (localStorage.getItem(filetype + version + variant + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
+            if (localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName) != null) {
                 $('#mirrors-content').load("mirror.html", function() {
                     $('#device-content').hide();
                     $('.navbar-fixed').show();
                     $('#filename-title').append(filename);
-                    $('#display-mirrors').append(localStorage.getItem(filetype + version + '_mirrors_' + deviceCodeName));
+                    $('#display-mirrors').append(localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName));
                 });
             }
         } else {
@@ -67,8 +66,8 @@ $(document).ready(function() {
                                 '</div>'
                             );
                         });
-                        localStorage.setItem(filetype + version + '_mirrors_' + deviceCodeName, $('#display-mirrors').html());
-                        localStorage.setItem(filetype + version + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
+                        localStorage.setItem(filetype + version + variant + '_mirrors_' + deviceCodeName, $('#display-mirrors').html());
+                        localStorage.setItem(filetype + version + variant + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
                         forceFetch = 0;
                     });
                 }

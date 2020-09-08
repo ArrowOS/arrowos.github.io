@@ -48,10 +48,12 @@ include_once('utils.php');
             <?php
             $devices_json = fetch_api_data($API_URL_CALLS['oem_devices_list']);
             $devices_version = fetch_api_data($API_URL_CALLS['devices_version_list']);
+            $devices_variant = fetch_api_data($API_URL_CALLS['devices_variant_list']);
 
-            if ($devices_json['code'] == "200" && $devices_version['code'] == "200") {
+            if ($devices_json['code'] == "200" && $devices_version['code'] == "200" && $devices_variant['code'] == "200") {
                 $devices_json = json_decode($devices_json['data'], true);
                 $devices_version = json_decode($devices_version['data'], true);
+                $devices_variant = json_decode($devices_variant['data'], true);
 
                 ksort($devices_json, SORT_STRING | SORT_FLAG_CASE);
             } else {
@@ -70,8 +72,9 @@ include_once('utils.php');
                             foreach ($devices as $device_codename) {
                             ?>
                                 <li>
-                                    <?php $versions = get_device_versions($devices_version, $device_codename) ?>
-                                    <a href="javascript:void(0);" class="sidenav-close" id="deviceLabel" name="<?php echo $versions ?>"><?php echo $device_codename ?></a>
+                                    <?php $versions = get_device_data($devices_version, $device_codename) ?>
+                                    <?php $variants = get_device_data($devices_variant, $device_codename) ?>
+                                    <a href="javascript:void(0);" class="sidenav-close" id="deviceLabel" data-versions="<?php echo $versions ?>" data-variants="<?php echo $variants ?>"><?php echo $device_codename ?></a>
                                 </li>
                             <?php } ?>
                         </ul>

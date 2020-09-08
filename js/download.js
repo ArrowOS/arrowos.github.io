@@ -1,4 +1,5 @@
 var supportedVersions;
+var supportedVariants;
 
 $(document).ready(function() {
     $('.navbar-fixed').hide();
@@ -13,21 +14,25 @@ $(document).ready(function() {
         $('#device-content').load("empty.html");
     } else {
         $('#device-content').addClass("scale-transition scale-out");
-        supportedVersions = JSON.stringify($('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').attr('name').split(','));
-        loadDevicePage(prevSelectedDevice, prevVariantSelected, prevVersionSelected, supportedVersions);
+        supportedVersions = JSON.stringify($('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('versions').split(','));
+        supportedVariants = JSON.stringify($('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('variants').split(','));
+        loadDevicePage(prevSelectedDevice, prevVariantSelected, prevVersionSelected, supportedVersions, supportedVariants);
     }
 
     $('body').on('click', '#deviceLabel', function() {
         $('#device-page-back').trigger('click');
         $('#device-content').addClass("scale-transition scale-out");
         selectedDevice = $(this).text();
-        supportedVersions = $(this).attr('name').split(',');
-        deviceVariant = (supportedVersions[0].includes('community')) ? "community" : "official";
+        supportedVersions = $(this).data('versions').split(',');
+        supportedVariants = $(this).data('variants').split(',');
+        deviceVariant = (supportedVariants.length >= 1) ? supportedVariants[0] : "official";
+        deviceVariant = localStorage.getItem(selectedDevice + '_variant') || deviceVariant;
         deviceVersion = (supportedVersions.length >= 1) ? supportedVersions[0] : null;
         deviceVersion = localStorage.getItem(selectedDevice + '_version') || deviceVersion;
         localStorage.setItem("device", selectedDevice);
         supportedVersions = JSON.stringify(supportedVersions);
-        loadDevicePage(selectedDevice, deviceVariant, deviceVersion, supportedVersions);
+        supportedVariants = JSON.stringify(supportedVariants);
+        loadDevicePage(selectedDevice, deviceVariant, deviceVersion, supportedVersions, supportedVariants);
     });
 
     $('body').on('click', '#select-device', function() {
@@ -39,13 +44,14 @@ $(document).ready(function() {
     });
 });
 
-function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersions) {
+function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersions, supportedVariants) {
     $('#device-content').load(
         "device.php", {
             device: devicename,
             deviceVariant: deviceVariant,
             deviceVersion: deviceVersion,
-            supportedVersions: supportedVersions
+            supportedVersions: supportedVersions,
+            supportedVariants: supportedVariants
         },
         function(response, status, xhr) {
             if (xhr.status === 200) {
@@ -56,6 +62,7 @@ function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersi
                 localStorage.setItem(devicename + '_variant', deviceVariant);
                 localStorage.setItem(devicename + '_version', deviceVersion);
                 localStorage.setItem(devicename + '_supportedVersions', supportedVersions);
+                localStorage.setItem(devicename + '_supportedVariants', supportedVariants);
             } else {
                 $('#device-content').removeClass("scale-transition scale-out");
                 $('#device-content').addClass("scale-transition");

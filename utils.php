@@ -21,19 +21,17 @@ function fetch_api_data($url)
     return $result;
 }
 
-function get_device_versions($device_versions, $device_codename)
+function get_device_data($device_data, $device_codename)
 {
-    $dev_versions = "";
+    $dev_data = "";
 
-    foreach (array_keys($device_versions) as $version) {
-        foreach ($device_versions[$version] as $codename) {
-            if ($codename == $device_codename) {
-                $dev_versions =  $dev_versions . "," . $version;
-            }
+    foreach (array_keys($device_data) as $data) {
+        if (in_array($device_codename, $device_data[$data])) {
+            $dev_data =  $dev_data . "," . $data;
         }
     }
 
-    return substr($dev_versions, 1);
+    return substr($dev_data, 1);
 }
 
 if (isset($_POST['url'])) {

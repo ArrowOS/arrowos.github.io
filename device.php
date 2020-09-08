@@ -8,13 +8,15 @@ if (
     isset($_POST['device']) &&
     isset($_POST['deviceVariant']) &&
     isset($_POST['deviceVersion']) &&
-    isset($_POST['supportedVersions'])
+    isset($_POST['supportedVersions']) &&
+    isset($_POST['supportedVariants'])
 ) {
 
     $device = $_POST['device'];
     $deviceVariant = $_POST['deviceVariant'];
     $deviceVersion = $_POST['deviceVersion'];
     $supportedVersions = json_decode($_POST['supportedVersions']);
+    $supportedVariants = json_decode($_POST['supportedVariants']);
 
     do {
         // Fallback legacy api call for arrow-9.x
@@ -69,18 +71,14 @@ if (
     <div class="row">
         <div class="row">
             <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model']));
-                                                                    if (!$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
+                                                                    if (!empty($device_info['status']) & !$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
 
             <div class="input-field col s12 m4 l4">
                 <select id="version-selector" selected="selected">
                     <?php foreach ($VERSIONS as $version) { ?>
-                        <option value="<?php echo strtolower(str_replace('*', '', $version)); ?>" <?php if (strpos($version, '*')) {
-                                                                                                        if (in_array(strtolower(str_replace('*', '', $version)), $supportedVersions)) {
-                                                                                                            echo "selected";
-                                                                                                        }
-                                                                                                    } ?> <?php if (!in_array(strtolower(str_replace('*', '', $version)), $supportedVersions)) {
-                                                                                                                echo "disabled";
-                                                                                                            } ?>><?php echo ucfirst($version); ?></option>
+                        <option value="<?php echo strtolower($version); ?>" <?php if (!in_array(strtolower($version), $supportedVersions)) {
+                                                                                echo "disabled";
+                                                                            } ?>><?php echo ucfirst($version); ?></option>
                     <?php } ?>
                 </select>
                 <label">Select version</label>
@@ -108,7 +106,10 @@ if (
             <div class="input-field col s12 m4 l4">
                 <select id="variant-selector" selected="selected">
                     <?php foreach ($VARIANTS as $variant) { ?>
-                        <option value="<?php echo (strtolower(str_replace('*', '', $variant)) == "beta") ? "unofficial" : strtolower(str_replace('*', '', $variant)) ?>" <?php if (strpos($variant, '*')) echo "selected"; ?>><?php echo ucfirst($variant) ?></option>
+                        <option value="<?php echo (strtolower($variant) == "beta") ? "unofficial" : strtolower($variant) ?>" <?php if ($variant == "community_unofficial" && in_array("community", $supportedVariants)) echo "";
+                                                                                                                                elseif (!in_array(strtolower($variant), $supportedVariants)) {
+                                                                                                                                    echo "disabled";
+                                                                                                                                } ?>><?php echo ucfirst($variant) ?></option>
                     <?php } ?>
                 </select>
                 <label>Select Build</label>
