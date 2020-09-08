@@ -71,7 +71,7 @@ if (
     <div class="row">
         <div class="row">
             <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model']));
-                                                                    if (!empty($device_info['status']) & !$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
+                                                                    if (!$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
 
             <div class="input-field col s12 m4 l4">
                 <select id="version-selector" selected="selected">
