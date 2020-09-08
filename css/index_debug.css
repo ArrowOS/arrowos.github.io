@@ -142,3 +142,21 @@ body {
 .collapsible-header {
     border-bottom: 0px solid #ddd;
 }
+
+.select-dropdown li.disabled,
+.select-dropdown li.disabled>span,
+.select-dropdown li.optgroup {
+    color: #fafafa59;
+    background-color: transparent;
+}
+
+.sponsor-text {
+    vertical-align: middle;
+    font-size: 16px;
+    padding-right: 5px;
+}
+
+.sponsor-logo {
+    height: 25px;
+    vertical-align: middle;
+}
