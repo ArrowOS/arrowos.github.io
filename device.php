@@ -106,10 +106,10 @@ if (
             <div class="input-field col s12 m4 l4">
                 <select id="variant-selector" selected="selected">
                     <?php foreach ($VARIANTS as $variant) { ?>
-                        <option value="<?php echo (strtolower($variant) == "beta") ? "unofficial" : strtolower($variant) ?>" <?php if ($variant == "community_unofficial" && in_array("community", $supportedVariants)) echo "";
-                                                                                                                                elseif (!in_array(strtolower($variant), $supportedVariants)) {
-                                                                                                                                    echo "disabled";
-                                                                                                                                } ?>><?php echo ucfirst($variant) ?></option>
+                        <option value="<?php echo strtolower($variant) ?>" <?php if ($variant == "community_unofficial" && in_array("community", $supportedVariants)) echo "";
+                                                                            elseif (!in_array(strtolower($variant), $supportedVariants)) {
+                                                                                echo "disabled";
+                                                                            } ?>><?php echo ucfirst($variant) ?></option>
                     <?php } ?>
                 </select>
                 <label>Select Build</label>

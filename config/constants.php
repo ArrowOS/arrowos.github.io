@@ -6,7 +6,7 @@ $VERSIONS = array(
 
 $VARIANTS = array(
     'official',
-    'beta',
+    'unofficial',
     'community',
     'community_unofficial'
 );
