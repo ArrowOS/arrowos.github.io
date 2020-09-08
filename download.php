@@ -89,7 +89,13 @@ include_once('utils.php');
         <div id="mirrors-content"></div>
     </main>
 
-
+    <div class="center">
+        <div id="sponsor" style="text-align: center">
+            <span class="sponsor-text">Powered by</span>
+            <a href="https://www.datapacket.com/"><img class="sponsor-logo" src="img/datapacket_logo.png" alt="Datapacket"></a>
+        </div>
+    </div>
+    <br><br>
     <footer class="page-footer card-theme-color">
         <div class="container">
             <div class="center">
