@@ -6,9 +6,9 @@ $VERSIONS = array(
 
 $VARIANTS = array(
     'official',
-    'unofficial',
+    'experiments',
     'community',
-    'community_unofficial'
+    'community_experiments'
 );
 
 $API_URL_CALLS = array(

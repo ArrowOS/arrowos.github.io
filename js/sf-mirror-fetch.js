@@ -15,11 +15,11 @@ $(document).ready(function() {
         var variant = localStorage.getItem(deviceCodeName + '_variant');
         if (variant == 'official') {
             projectName = 'arrow-os';
-        } else if (variant == 'unofficial') {
+        } else if (variant == 'experiments') {
             projectName = 'arrowos-beta';
         } else if (variant == 'community') {
             projectName = 'arrowos-community';
-        } else if (variant == 'community_unofficial') {
+        } else if (variant == 'community_experiments') {
             projectName = 'arrowos-beta'
             filepath = '/arrow-community' + filepath;
         }
