@@ -81,8 +81,9 @@ if (
                                                                             } ?>><?php echo ucfirst($version); ?></option>
                     <?php } ?>
                 </select>
-                <label">Select version</label>
+                <label>Select version</label>
             </div>
+            
         </div>
         <div style="padding-left: 15px;" class="row">
             <div class="card card-theme-color darken-1 col s12 m12 l10 ">
