@@ -7,15 +7,23 @@ $(document).ready(function() {
     $('.sidenav').sidenav();
 
     var prevSelectedDevice = localStorage.device;
-    var prevVariantSelected = localStorage.getItem(prevSelectedDevice + '_variant');
-    var prevVersionSelected = localStorage.getItem(prevSelectedDevice + '_version');
 
     if (prevSelectedDevice == null) {
         $('#device-content').load("empty.html");
     } else {
+        supportedVersions = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('versions').split(',');
+        supportedVariants = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('variants').split(',');
+
+        var prevVariantSelected = localStorage.getItem(prevSelectedDevice + '_variant');
+        var prevVersionSelected = localStorage.getItem(prevSelectedDevice + '_version');
+
+        prevVariantSelected = isStillAvailable(supportedVariants, prevVariantSelected);
+        prevVersionSelected = isStillAvailable(supportedVersions, prevVersionSelected);
+
+        supportedVariants = JSON.stringify(supportedVariants);
+        supportedVersions = JSON.stringify(supportedVersions);
+
         $('#device-content').addClass("scale-transition scale-out");
-        supportedVersions = JSON.stringify($('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('versions').split(','));
-        supportedVariants = JSON.stringify($('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('variants').split(','));
         loadDevicePage(prevSelectedDevice, prevVariantSelected, prevVersionSelected, supportedVersions, supportedVariants);
     }
 
@@ -25,10 +33,12 @@ $(document).ready(function() {
         selectedDevice = $(this).text();
         supportedVersions = $(this).data('versions').split(',');
         supportedVariants = $(this).data('variants').split(',');
-        deviceVariant = (supportedVariants.length >= 1) ? supportedVariants[0] : "official";
-        deviceVariant = localStorage.getItem(selectedDevice + '_variant') || deviceVariant;
-        deviceVersion = (supportedVersions.length >= 1) ? supportedVersions[0] : null;
-        deviceVersion = localStorage.getItem(selectedDevice + '_version') || deviceVersion;
+        deviceVariant = localStorage.getItem(selectedDevice + '_variant');
+        deviceVersion = localStorage.getItem(selectedDevice + '_version');
+
+        deviceVariant = isStillAvailable(supportedVariants, deviceVariant);
+        deviceVersion = isStillAvailable(supportedVersions, deviceVersion);
+
         localStorage.setItem("device", selectedDevice);
         supportedVersions = JSON.stringify(supportedVersions);
         supportedVariants = JSON.stringify(supportedVariants);
@@ -43,6 +53,13 @@ $(document).ready(function() {
         location.reload();
     });
 });
+
+/* Check if the previously selected version/variants are available for the device anymore
+   If not then fallback to a default available value
+*/
+function isStillAvailable(deviceData, prevVal) {
+    return (deviceData.includes(prevVal)) ? prevVal : deviceData[0];
+}
 
 function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersions, supportedVariants) {
     $('#device-content').load(
