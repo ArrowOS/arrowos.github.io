@@ -69,6 +69,10 @@ $(document).ready(function() {
                         localStorage.setItem(filetype + version + variant + '_mirrors_' + deviceCodeName, $('#display-mirrors').html());
                         localStorage.setItem(filetype + version + variant + '_filedate_' + deviceCodeName, filetype + '-' + datetime);
                         forceFetch = 0;
+
+                        $('html, body').animate({
+                            scrollTop: $("#mirrors-section").offset().top - $(window).height() / 2
+                        }, 1000);
                     });
                 }
             });
