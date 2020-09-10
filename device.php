@@ -187,14 +187,14 @@ if (
             <tbody>
                 <tr>
                     <td><b>VANILLA:</b></td>
-                    <td><?php echo $device_info['sha256'] ?></td>
+                    <td id="vanilla-file_sha256"><?php echo $device_info['sha256'] ?></td>
                 </tr>
             </tbody>
             <?php if (isset($gapps_device_info)) { ?>
                 <tbody>
                     <tr>
                         <td><b>GAPPS:</b></td>
-                        <td><?php echo $gapps_device_info['sha256'] ?></td>
+                        <td id="gapps-file_sha256"><?php echo $gapps_device_info['sha256'] ?></td>
                     </tr>
                 </tbody>
             <?php } ?>
