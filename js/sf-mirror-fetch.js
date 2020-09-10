@@ -72,7 +72,7 @@ $(document).ready(function() {
                     'variant': variant,
                     'filename': filename
                 },
-                url: 'http://get.mirror1.arrowos.net/download.php',
+                url: 'https://get.mirror1.arrowos.net/download.php',
                 success: function(data) {
                     arrowMirror = data;
                 },
