@@ -17,15 +17,27 @@
 </head>
 
 <body>
+
+    <nav class="nav-background black-text z-depth-0">
+        <div class="nav-wrapper container">
+            <div class="nav-wrapper ">
+                <ul class="left">
+                    <li class="tab col s3">
+                        <a title="Close" id="device-page-back" class="main-font white-text"> <i class="close material-icons">close</i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="row">
             <div style="padding-top: 10vh;" class="center">
                 <img class="main_logo" src="img/logo.png">
                 <br><br>
-                <h4>Source Changelogs</h4>
-                <br>
-                <br><br>
-                <div class="col s12 m6 l6 offset-l3 offset-m3">
+                <h4>Source Changelog</h4>
+                <br><br><br>
+                <div class="col s12 m10 l10 offset-l1 offset-m1">
                     <div class="card card-theme-color darken-1">
                         <div class="card-content white-text">
                             <ul style="border-width: 0px;" class="collapsible z-depth-0">
@@ -52,7 +64,7 @@
                                                             <?php
                                                             foreach (explode(PHP_EOL, $log) as $log) {
                                                             ?>
-                                                                <p>
+                                                                <p class="text-align-left">
                                                                     <?php
                                                                     echo trim($log);
                                                                     ?>
@@ -69,9 +81,11 @@
                         </div>
                     </div>
                 </div>
-                <br>
-                <div class="col s12 m6 l6 offset-l3 offset-m3">
-                    <div class="center">
+                <br><br>
+                <div class="col s12 m8 l8 offset-l2 offset-m2">
+                <div class="card card-theme-color z-depth-3 radius">
+                    <div class="center card-content">
+                        <span class="card-title">Oof Ads</span>
                         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                         <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5568741006164863" data-ad-slot="7462336018"></ins>
                         <script>
@@ -79,6 +93,7 @@
                         </script>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
