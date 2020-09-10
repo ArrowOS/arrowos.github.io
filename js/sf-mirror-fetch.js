@@ -13,6 +13,9 @@ $(document).ready(function() {
         var filepath = '/' + version + "/" + deviceCodeName + '/' + filename.trim();
         var file_sha256 = $('#' + filetype + '-file_sha256').text();
 
+        var arrowMirror = '';
+        var mirrorsData = '';
+
         var variant = localStorage.getItem(deviceCodeName + '_variant');
         if (variant == 'official') {
             projectName = 'arrow-os';
