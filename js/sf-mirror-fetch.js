@@ -35,7 +35,11 @@ $(document).ready(function() {
                     url: "/mirror.html",
                     cache: false,
                     dataType: "html",
+                    beforeSend: function() {
+                        $('#' + filetype + '-fetch-progress').append('<div class="progress"><div class="indeterminate"></div></div>');
+                    },
                     success: function(data) {
+                        $('#' + filetype + '-fetch-progress').empty();
                         $('#mirrors-content').html(data);
                         $('#device-content').hide();
                         $('.navbar-fixed').show();
