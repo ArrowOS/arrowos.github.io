@@ -28,6 +28,10 @@ body {
     font-size: 20px
 }
 
+.general-text {
+    font-size: 18px
+}
+
 .textt {
     font-size: 54px;
 }
@@ -141,6 +145,16 @@ body {
 
 .collapsible-header {
     border-bottom: 0px solid #ddd;
+    background-color: #1e1e1e;
+}
+
+.collapsible-body {
+    border-bottom: 0px solid #ddd;
+    background-color: #1e1e1e;
+}
+
+.text-align-left {
+    text-align: left;
 }
 
 .select-dropdown li.disabled,

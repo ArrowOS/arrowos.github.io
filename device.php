@@ -175,6 +175,13 @@ if (
             </div>
         <?php } ?>
     </div>
+    <br>
+    <div class="center">
+        <div id="sponsor" style="text-align: center">
+            <span class="sponsor-text">Powered by</span>
+            <a href="https://www.datapacket.com/" target="_blank"><img class="sponsor-logo" src="img/datapacket_logo.png" alt="Datapacket"></a>
+        </div>
+    </div>
 </div>
 
 <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
@@ -225,7 +232,7 @@ if (
                     </p>
                 </div>
             </div>
-            <a id="source-changelog" class="btn-small card card-theme-color" href="changelog.php"><i class="material-icons left">reorder</i>source changelog</a>
+            <a id="source-changelog" class="btn-large card card-theme-color waves-effect grey darken-4 waves-light" href="changelog.php"><i class="material-icons left">reorder</i>source changelog</a>
         </div>
     </div>
 </div>
