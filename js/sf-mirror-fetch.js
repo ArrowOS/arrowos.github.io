@@ -41,6 +41,10 @@ $(document).ready(function() {
                         $('.navbar-fixed').show();
                         $('#filename-title').append(filename);
                         $('#display-mirrors').append(localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName));
+
+                        $('html, body').animate({
+                            scrollTop: $("#mirrors-section").offset().top - $(window).height() / 2
+                        }, 1000);
                     }
                 });
             }
