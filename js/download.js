@@ -14,7 +14,7 @@ $(document).ready(function() {
         supportedVersions = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('versions').split(',');
         supportedVariants = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('variants').split(',');
 
-        var prevVariantSelected = localStorage.getItem(prevSelectedDevice + '_variant');
+        var prevVariantSelected = localStorage.getItem(prevSelectedDevice + '_variant') || 'official';
         var prevVersionSelected = localStorage.getItem(prevSelectedDevice + '_version');
 
         prevVariantSelected = isStillAvailable(supportedVariants, prevVariantSelected);
@@ -33,7 +33,7 @@ $(document).ready(function() {
         selectedDevice = $(this).text();
         supportedVersions = $(this).data('versions').split(',');
         supportedVariants = $(this).data('variants').split(',');
-        deviceVariant = localStorage.getItem(selectedDevice + '_variant');
+        deviceVariant = localStorage.getItem(selectedDevice + '_variant') || 'official';
         deviceVersion = localStorage.getItem(selectedDevice + '_version');
 
         deviceVariant = isStillAvailable(supportedVariants, deviceVariant);
