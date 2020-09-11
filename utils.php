@@ -49,3 +49,13 @@ if (isset($_POST['url'])) {
     $mirrors->clear();
     unset($mirrors);
 }
+
+function compareByTimeStamp($time1, $time2)
+{
+    if (strtotime($time1) < strtotime($time2))
+        return 1;
+    else if (strtotime($time1) > strtotime($time2))
+        return -1;
+    else
+        return 0;
+}

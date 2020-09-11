@@ -54,15 +54,16 @@
                                         <div class="collapsible-body">
                                             <ul style="border-width: 0px;" class="collapsible z-depth-0">
                                                 <?php
-                                                krsort($dates);
-                                                foreach ($dates as $date => $log) {
+                                                $dates = array_keys($dates);
+                                                usort($dates, "compareByTimeStamp");
+                                                foreach ($dates as $date) {
                                                 ?>
                                                     <li <?php if ($is_first) { ?> class="active" <?php }
                                                                                             $is_first = false ?>>
                                                         <div class="collapsible-header card-theme-color"><i class="tiny material-icons">calendar_today</i><?php echo $date ?></div>
                                                         <div class="collapsible-body">
                                                             <?php
-                                                            foreach (explode(PHP_EOL, $log) as $log) {
+                                                            foreach (explode(PHP_EOL, $changelogs[$version][$date]) as $log) {
                                                             ?>
                                                                 <p class="text-align-left">
                                                                     <?php
