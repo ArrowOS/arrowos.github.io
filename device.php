@@ -177,9 +177,9 @@ if (
     </div>
     <br>
     <div class="center">
-        <div id="sponsor" style="text-align: center">
-            <span class="sponsor-text">Powered by</span>
-            <a href="https://www.datapacket.com/" target="_blank"><img class="sponsor-logo" src="img/datapacket_logo.png" alt="Datapacket"></a>
+        <div id="datapacket" style="text-align: center">
+            <span class="datapacket-text">Powered by</span>
+            <a href="https://www.datapacket.com/" target="_blank"><img class="datapacket-logo" src="img/datapacket_logo.png" alt="Datapacket"></a>
         </div>
     </div>
 </div>
