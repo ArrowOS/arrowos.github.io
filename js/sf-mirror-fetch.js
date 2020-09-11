@@ -1,7 +1,8 @@
 $(document).ready(function() {
     var forceFetch = 0;
     var filetype;
-    $('body').on('click', '#fetch-mirrors', function() {
+    $('body').on('click', '#fetch-mirrors:not(.clicked)', function() {
+        $('#fetch-mirrors').addClass('clicked')
         filetype = $(this).attr('name');
         var deviceCodeName = $('#device-codename').attr('name');
         var datetime = $('#' + filetype + '-datetime').attr('name');
@@ -130,6 +131,7 @@ $(document).ready(function() {
                     }, 1000);
                 }
             });
+            $('#fetch-mirrors').removeClass('clicked')
         }
     });
 
