@@ -23,7 +23,7 @@
             <div class="nav-wrapper ">
                 <ul class="left">
                     <li class="tab col s3">
-                        <a title="Close" id="device-page-back" class="main-font white-text"> <i class="close material-icons">close</i></a>
+                        <a title="Close" id="changelog-page-back" class="main-font white-text"> <i class="close material-icons">close</i></a>
                     </li>
                 </ul>
             </div>
@@ -101,6 +101,9 @@
     <script>
         $(document).ready(function() {
             $('.collapsible').collapsible();
+            $('body').on('click', '#changelog-page-back', function() {
+                window.location.href = "download.php";
+            });
         })
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
