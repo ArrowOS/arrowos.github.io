@@ -33,7 +33,7 @@ $(document).ready(function() {
         selectedDevice = $(this).text();
         supportedVersions = $(this).data('versions').split(',');
         supportedVariants = $(this).data('variants').split(',');
-        deviceVariant = localStorage.getItem(selectedDevice + '_variant') || 'official';
+        deviceVariant = localStorage.getItem(selectedDevice + '_variant') || supportedVariants.includes('community') ? 'community' : 'official';
         deviceVersion = localStorage.getItem(selectedDevice + '_version');
 
         deviceVariant = isStillAvailable(supportedVariants, deviceVariant);
