@@ -21,7 +21,7 @@ if (
     do {
         // Fallback legacy api call for arrow-9.x
         if ($deviceVersion == "arrow-9.x") {
-            $device_info = fetch_api_data(
+            $vanilla_device_info = fetch_api_data(
                 str_replace(
                     array('{device}', '{variant}', '{version}', '{zipvariant}'),
                     array($device, $deviceVariant, $deviceVersion, 'pie'),
@@ -31,7 +31,7 @@ if (
             break;
         }
 
-        $device_info = fetch_api_data(
+        $vanilla_device_info = fetch_api_data(
             str_replace(
                 array('{device}', '{variant}', '{version}', '{zipvariant}'),
                 array($device, $deviceVariant, $deviceVersion, 'vanilla'),
@@ -48,12 +48,19 @@ if (
         break;
     } while (0);
 
-    if ($device_info['code'] == "200" || $gapps_device_info['code'] == "200") {
-        $device_info = json_decode($device_info['data'], true);
+    if ($vanilla_device_info['code'] == "200" || $gapps_device_info['code'] == "200") {
+        $vanilla_device_info = json_decode($vanilla_device_info['data'], true);
         $gapps_device_info = json_decode($gapps_device_info['data'], true);
 
-        $device_info = $device_info['response'][0];
+        $vanilla_device_info = $vanilla_device_info['response'][0];
         $gapps_device_info = $gapps_device_info['response'][0];
+
+        if (!isset($vanilla_device_info) && !isset($gapps_device_info)) http_response_code(404);
+
+        if (isset($vanilla_device_info))
+            $initial_device_info = $vanilla_device_info;
+        elseif (isset($gapps_device_info))
+            $initial_device_info = $gapps_device_info;
     } else {
         http_response_code(404);
     }
@@ -62,7 +69,7 @@ if (
 }
 ?>
 <div class="center hide-on-large-only">
-    <img class="main_logo" src="img/logo.png">
+    <img class="main_logo" src="/img/logo.png">
     <br>
     <br>
 </div>
@@ -70,8 +77,8 @@ if (
 <div style="padding-top: 50px;" class="container">
     <div class="row">
         <div class="row">
-            <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($device_info['model']));
-                                                                    if (!$device_info['status']) echo " [DISCONTINUED]"; ?></h4>
+            <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($initial_device_info['model']));
+                                                                    if (!$initial_device_info['status']) echo " [DISCONTINUED]"; ?></h4>
 
             <div class="input-field col s12 m4 l4">
                 <select id="version-selector" selected="selected">
@@ -83,13 +90,13 @@ if (
                 </select>
                 <label>Select version</label>
             </div>
-            
+
         </div>
         <div style="padding-left: 15px;" class="row">
             <div class="card card-theme-color darken-1 col s12 m12 l10 ">
                 <div class="card-content white-text">
                     <h5 id="device-codename" name="<?php echo $device ?>">Codename:</h5> <?php echo ucfirst($device) ?>
-                    <h5>Maintained by:</h5> <?php echo ucfirst($device_info['maintainer']) ?>
+                    <h5>Maintained by:</h5> <?php echo ucfirst($initial_device_info['maintainer']) ?>
                 </div>
 
             </div>
@@ -116,34 +123,36 @@ if (
                 <label>Select Build</label>
             </div>
         </div>
-        <div class="col s12 m6 l6">
-            <div class="card card-theme-color darken-1">
-                <div class="card-content white-text">
-                    <span class="card-title"><b>VANILLA</b> build</span>
-                    <p><b>Size:</b> <?php echo number_format((float)$device_info['size'] / 1000000, 2, '.', '') ?> MB</p>
-                    <p><b>Type:</b> <?php echo ucfirst($device_info['type']) ?></p>
-                    <p id="vanilla-version"><b>Version:</b> <?php echo $device_info['version'] ?></p>
-                    <p><b>Date:</b> <?php echo $device_info['date'] ?></p>
-                    <p id="vanilla-datetime" name="<?php echo $device_info['datetime'] ?>"></p>
-                    <p id="vanilla-filename" name="<?php echo $device_info['filename'] ?>"></p>
-                </div>
-                <div style="border-radius: 10px;" class="card-action center">
-                    <ul>
-                        <li>
-                            <a class="btn-flat">
-                                <div id="fetch-mirrors" name="vanilla" class="card-theme-color center">
-                                    <i class="material-icons">file_download</i>
-                                    DOWNLOAD
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div id="vanilla-fetch-progress" class="center"></div>
-                        </li>
-                    </ul>
+        <?php if (isset($vanilla_device_info)) { ?>
+            <div class="col s12 m6 l6">
+                <div class="card card-theme-color darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title"><b>VANILLA</b> build</span>
+                        <p><b>Size:</b> <?php echo number_format((float)$vanilla_device_info['size'] / 1000000, 2, '.', '') ?> MB</p>
+                        <p><b>Type:</b> <?php echo ucfirst($vanilla_device_info['type']) ?></p>
+                        <p id="vanilla-version"><b>Version:</b> <?php echo $vanilla_device_info['version'] ?></p>
+                        <p><b>Date:</b> <?php echo $vanilla_device_info['date'] ?></p>
+                        <p id="vanilla-datetime" name="<?php echo $vanilla_device_info['datetime'] ?>"></p>
+                        <p id="vanilla-filename" name="<?php echo $vanilla_device_info['filename'] ?>"></p>
+                    </div>
+                    <div style="border-radius: 10px;" class="card-action center">
+                        <ul>
+                            <li>
+                                <a class="btn-flat">
+                                    <div id="fetch-mirrors" name="vanilla" class="card-theme-color center">
+                                        <i class="material-icons">file_download</i>
+                                        DOWNLOAD
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <div id="vanilla-fetch-progress" class="center"></div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        <?php } ?>
         <?php if (isset($gapps_device_info)) { ?>
             <div class="col s12 m6 l6">
                 <div class="card card-theme-color">
@@ -179,7 +188,7 @@ if (
     <div class="center">
         <div id="datapacket" style="text-align: center">
             <span class="datapacket-text">Powered by</span>
-            <a href="https://www.datapacket.com/" target="_blank"><img class="datapacket-logo" src="img/datapacket_logo.png" alt="Datapacket"></a>
+            <a href="https://www.datapacket.com/" target="_blank"><img class="datapacket-logo" src="/img/datapacket_logo.png" alt="Datapacket"></a>
         </div>
     </div>
 </div>
@@ -191,12 +200,14 @@ if (
         <h4 class="primary-color" style="padding-bottom: 20px;">Integrity check</h4>
         <strong>The sha256 of the following build types are:</strong>
         <table class="highlight responsive-table">
-            <tbody>
-                <tr>
-                    <td><b>VANILLA:</b></td>
-                    <td id="vanilla-file_sha256"><?php echo $device_info['sha256'] ?></td>
-                </tr>
-            </tbody>
+            <?php if (isset($vanilla_device_info)) { ?>
+                <tbody>
+                    <tr>
+                        <td><b>VANILLA:</b></td>
+                        <td id="vanilla-file_sha256"><?php echo $vanilla_device_info['sha256'] ?></td>
+                    </tr>
+                </tbody>
+            <?php } ?>
             <?php if (isset($gapps_device_info)) { ?>
                 <tbody>
                     <tr>
@@ -211,7 +222,7 @@ if (
     <b>Windows (Powershell):</b>
     <blockquote class="block">Get-filehash <?php echo $gapps_device_info['filename'] ?></blockquote>
     <b>Linux (Ubuntu 20.4):</b>
-    <blockquote class="block">sha256sum <?php echo $device_info['filename'] ?></blockquote>
+    <blockquote class="block">sha256sum <?php echo $vanilla_device_info['filename'] ?></blockquote>
     <br>
     <a href="https://blog.arrowos.net/posts/checking-build-integrity">You can also check our blog post for the same.</a>
 </div>
@@ -227,7 +238,7 @@ if (
                     <span class="card-title">Device side changes</span>
                     <p>
                         <?php
-                        echo nl2br(stripcslashes($device_info['changelog']));
+                        echo nl2br(stripcslashes($initial_device_info['changelog']));
                         ?>
                     </p>
                 </div>
@@ -253,4 +264,4 @@ if (
         </div>
     </div>
 </div>
-<script src="js/device.js"></script>
+<script src="/js/device.js"></script>

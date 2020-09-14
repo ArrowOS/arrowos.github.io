@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('select').formSelect();
     var dpData = {
         get device() {
-            return localStorage.getItem('device');
+            return localStorage.getItem('device') || $('#get_device').data('device');
         },
         get variantSelected() {
             return $('#variant-selector').val();

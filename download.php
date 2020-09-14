@@ -13,13 +13,16 @@ include_once('utils.php');
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.4.55/css/materialdesignicons.min.css">
-    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/index_debug.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/index_debug.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
-    <link href="css/download.css" type="text/css" rel="stylesheet">
+    <link href="/css/download.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
+    <?php if (isset($_GET['device'])) { ?>
+        <div id="get_device" data-device="<?php echo $_GET['device'] ?>"></div>
+    <?php } ?>
     <nav class="nav-background hide-on-large-only z-depth-0" role="navigation">
         <div class="nav-wrapper container">
             <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i class="material-icons">menu</i></a>
@@ -112,11 +115,11 @@ include_once('utils.php');
 
     <!--  Scripts-->
     <!-- JS -->
-    <script src="js/jquery-3.5.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
-    <script src="js/download.js"></script>
-    <script src="js/sf-mirror-fetch.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
+    <script src="/js/materialize.js"></script>
+    <script src="/js/init.js"></script>
+    <script src="/js/download.js"></script>
+    <script src="/js/sf-mirror-fetch.js"></script>
 
 </body>
 

@@ -57,7 +57,7 @@ $(document).ready(function() {
             $.ajax({
                 type: 'POST',
                 data: { 'url': mirrorsUrl },
-                url: 'utils.php',
+                url: '/utils.php',
                 beforeSend: function() {
                     $('#' + filetype + '-fetch-progress').append('<div class="progress"><div class="indeterminate"></div></div>');
                 },

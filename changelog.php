@@ -9,11 +9,11 @@
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/index_debug.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="/css/index_debug.css" type="text/css" rel="stylesheet" media="screen,projection" />
 
     <!-- JS -->
-    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="/js/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>

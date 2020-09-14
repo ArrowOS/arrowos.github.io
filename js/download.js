@@ -6,16 +6,16 @@ $(document).ready(function() {
     $('.collapsible').collapsible();
     $('.sidenav').sidenav();
 
-    var prevSelectedDevice = localStorage.device;
+    var prevSelectedDevice = $('#get_device').data('device') || localStorage.device;
 
     if (prevSelectedDevice == null) {
-        $('#device-content').load("empty.html");
+        $('#device-content').load("/empty.html");
     } else {
         supportedVersions = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('versions').split(',');
         supportedVariants = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('variants').split(',');
 
-        var prevVariantSelected = localStorage.getItem(prevSelectedDevice + '_variant') || 'official';
-        var prevVersionSelected = localStorage.getItem(prevSelectedDevice + '_version');
+        var prevVariantSelected = localStorage.getItem(prevSelectedDevice + '_variant') || supportedVariants.includes('community') ? 'community' : 'official';
+        var prevVersionSelected = localStorage.getItem(prevSelectedDevice + '_version') || 'arrow-10.0';
 
         prevVariantSelected = isStillAvailable(supportedVariants, prevVariantSelected);
         prevVersionSelected = isStillAvailable(supportedVersions, prevVersionSelected);
@@ -34,7 +34,7 @@ $(document).ready(function() {
         supportedVersions = $(this).data('versions').split(',');
         supportedVariants = $(this).data('variants').split(',');
         deviceVariant = localStorage.getItem(selectedDevice + '_variant') || supportedVariants.includes('community') ? 'community' : 'official';
-        deviceVersion = localStorage.getItem(selectedDevice + '_version');
+        deviceVersion = localStorage.getItem(selectedDevice + '_version') || 'arrow-10.0';
 
         deviceVariant = isStillAvailable(supportedVariants, deviceVariant);
         deviceVersion = isStillAvailable(supportedVersions, deviceVersion);
@@ -50,7 +50,7 @@ $(document).ready(function() {
     });
 
     $('body').on('click', '#reload-device', function() {
-        location.reload();
+        window.location.href = '/download';
     });
 });
 
@@ -62,15 +62,22 @@ function isStillAvailable(deviceData, prevVal) {
 }
 
 function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersions, supportedVariants) {
-    $('#device-content').load(
-        "device.php", {
+    $.ajax({
+        url: "/device.php",
+        cache: false,
+        dataType: "html",
+        type: "POST",
+        data: {
             device: devicename,
             deviceVariant: deviceVariant,
             deviceVersion: deviceVersion,
             supportedVersions: supportedVersions,
             supportedVariants: supportedVariants
         },
-        function(response, status, xhr) {
+        success: function(data) {
+            $('#device-content').html(data);
+        },
+        complete: function(xhr) {
             if (xhr.status === 200) {
                 $('#device-content').removeClass("scale-transition scale-out");
                 $('#device-content').addClass("scale-transition");
@@ -84,7 +91,7 @@ function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersi
                 $('#device-content').removeClass("scale-transition scale-out");
                 $('#device-content').addClass("scale-transition");
                 $('#device-content').load(
-                    "device404.php", {
+                    "/device404.php", {
                         device: devicename,
                         deviceVariant: deviceVariant,
                         deviceVersion: deviceVersion,
@@ -92,5 +99,5 @@ function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersi
                 );
             }
         }
-    );
+    });
 }
