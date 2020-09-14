@@ -14,8 +14,8 @@ $(document).ready(function() {
         supportedVersions = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('versions').split(',');
         supportedVariants = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('variants').split(',');
 
-        var prevVariantSelected = localStorage.getItem(prevSelectedDevice + '_variant') || supportedVariants.includes('community') ? 'community' : 'official';
-        var prevVersionSelected = localStorage.getItem(prevSelectedDevice + '_version') || 'arrow-10.0';
+        prevVariantSelected = (localStorage.getItem(prevSelectedDevice + '_variant') == null) ? supportedVariants.includes('community') ? 'community' : 'official' : localStorage.getItem(prevSelectedDevice + '_variant');
+        prevVersionSelected = (localStorage.getItem(prevSelectedDevice + '_version') == null) ? 'arrow-10.0' : localStorage.getItem(prevSelectedDevice + '_version');
 
         prevVariantSelected = isStillAvailable(supportedVariants, prevVariantSelected);
         prevVersionSelected = isStillAvailable(supportedVersions, prevVersionSelected);
@@ -33,13 +33,12 @@ $(document).ready(function() {
         selectedDevice = $(this).text();
         supportedVersions = $(this).data('versions').split(',');
         supportedVariants = $(this).data('variants').split(',');
-        deviceVariant = localStorage.getItem(selectedDevice + '_variant') || supportedVariants.includes('community') ? 'community' : 'official';
-        deviceVersion = localStorage.getItem(selectedDevice + '_version') || 'arrow-10.0';
+        deviceVariant = (localStorage.getItem(selectedDevice + '_variant') == null) ? supportedVariants.includes('community') ? 'community' : 'official' : localStorage.getItem(selectedDevice + '_variant');
+        deviceVersion = (localStorage.getItem(selectedDevice + '_version') == null) ? 'arrow-10.0' : localStorage.getItem(selectedDevice + '_version');
 
         deviceVariant = isStillAvailable(supportedVariants, deviceVariant);
         deviceVersion = isStillAvailable(supportedVersions, deviceVersion);
 
-        localStorage.setItem("device", selectedDevice);
         supportedVersions = JSON.stringify(supportedVersions);
         supportedVariants = JSON.stringify(supportedVariants);
         loadDevicePage(selectedDevice, deviceVariant, deviceVersion, supportedVersions, supportedVariants);
@@ -83,6 +82,7 @@ function loadDevicePage(devicename, deviceVariant, deviceVersion, supportedVersi
                 $('#device-content').addClass("scale-transition");
                 $(window).scrollTop(0);
 
+                localStorage.setItem("device", devicename);
                 localStorage.setItem(devicename + '_variant', deviceVariant);
                 localStorage.setItem(devicename + '_version', deviceVersion);
                 localStorage.setItem(devicename + '_supportedVersions', supportedVersions);
