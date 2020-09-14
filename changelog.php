@@ -102,7 +102,7 @@
         $(document).ready(function() {
             $('.collapsible').collapsible();
             $('body').on('click', '#changelog-page-back', function() {
-                window.location.href = "download.php";
+                window.location.href = "/download";
             });
         })
     </script>

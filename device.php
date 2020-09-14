@@ -243,7 +243,7 @@ if (
                     </p>
                 </div>
             </div>
-            <a id="source-changelog" class="btn-large card card-theme-color waves-effect grey darken-4 waves-light" href="changelog.php"><i class="material-icons left">reorder</i>source changelog</a>
+            <a id="source-changelog" class="btn-large card card-theme-color waves-effect grey darken-4 waves-light" href="/changelog.php"><i class="material-icons left">reorder</i>source changelog</a>
         </div>
     </div>
 </div>
