@@ -220,9 +220,9 @@ if (
     </div>
     <strong>You can check sha256sum via the following command examples:</strong><br>
     <b>Windows (Powershell):</b>
-    <blockquote class="block">Get-filehash <?php echo $gapps_device_info['filename'] ?></blockquote>
+    <blockquote class="block">Get-filehash <?php echo $initial_device_info['filename'] ?></blockquote>
     <b>Linux (Ubuntu 20.4):</b>
-    <blockquote class="block">sha256sum <?php echo $vanilla_device_info['filename'] ?></blockquote>
+    <blockquote class="block">sha256sum <?php echo $initial_device_info['filename'] ?></blockquote>
     <br>
     <a href="https://blog.arrowos.net/posts/checking-build-integrity">You can also check our blog post for the same.</a>
 </div>
