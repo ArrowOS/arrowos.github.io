@@ -1,7 +1,8 @@
 <?php
 $VERSIONS = array(
     'arrow-9.x',
-    'arrow-10.0'
+    'arrow-10.0',
+    'arrow-11.0'
 );
 
 $VARIANTS = array(
