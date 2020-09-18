@@ -15,7 +15,7 @@ $(document).ready(function() {
         supportedVariants = $('[id="deviceLabel"]:contains("' + prevSelectedDevice + '")').data('variants').split(',');
 
         prevVariantSelected = (localStorage.getItem(prevSelectedDevice + '_variant') == null) ? supportedVariants.includes('community') ? 'community' : 'official' : localStorage.getItem(prevSelectedDevice + '_variant');
-        prevVersionSelected = (localStorage.getItem(prevSelectedDevice + '_version') == null) ? 'arrow-10.0' : localStorage.getItem(prevSelectedDevice + '_version');
+        prevVersionSelected = (localStorage.getItem(prevSelectedDevice + '_version') == null) ? 'arrow-11.0' : localStorage.getItem(prevSelectedDevice + '_version');
 
         prevVariantSelected = isStillAvailable(supportedVariants, prevVariantSelected);
         prevVersionSelected = isStillAvailable(supportedVersions, prevVersionSelected);
@@ -34,7 +34,7 @@ $(document).ready(function() {
         supportedVersions = $(this).data('versions').split(',');
         supportedVariants = $(this).data('variants').split(',');
         deviceVariant = (localStorage.getItem(selectedDevice + '_variant') == null) ? supportedVariants.includes('community') ? 'community' : 'official' : localStorage.getItem(selectedDevice + '_variant');
-        deviceVersion = (localStorage.getItem(selectedDevice + '_version') == null) ? 'arrow-10.0' : localStorage.getItem(selectedDevice + '_version');
+        deviceVersion = (localStorage.getItem(selectedDevice + '_version') == null) ? 'arrow-11.0' : localStorage.getItem(selectedDevice + '_version');
 
         deviceVariant = isStillAvailable(supportedVariants, deviceVariant);
         deviceVersion = isStillAvailable(supportedVersions, deviceVersion);
