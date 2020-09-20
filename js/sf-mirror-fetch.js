@@ -15,6 +15,7 @@ $(document).ready(function() {
         var file_sha256 = $('#' + filetype + '-file_sha256').text();
 
         var arrowMirror = '';
+        var arrowMirrorResp = '';
         var mirrorsData = '';
 
         var variant = localStorage.getItem(deviceCodeName + '_variant');
@@ -85,7 +86,8 @@ $(document).ready(function() {
                 success: function(data) {
                     arrowMirror = data;
                 },
-                complete: function() {
+                complete: function(xhr) {
+                    arrowMirrorResp = xhr.status;
                     showMirrorsContent(mirrorsData, arrowMirror);
                 }
             });
@@ -104,11 +106,19 @@ $(document).ready(function() {
                     $('.navbar-fixed').show();
                     $('#filename-title').append(filename);
 
-                    if (arrowMirror != null && arrowMirror != '' && !arrowMirror.includes('No')) {
+                    if (arrowMirror != null && arrowMirror != '' && arrowMirrorResp === 200) {
                         $('#display-mirrors').append(
                             '<div class="chip">' +
                             '<i class="close material-icons">cloud</i>' +
                             '<a target="_blank" style="color: #141414;" href="' + arrowMirror + '">arrow1</a>' +
+                            '</div>' +
+                            '<hr class="solid" style="border-top: 3px solid #bbb;">'
+                        );
+                    } else {
+                        $('#display-mirrors').append(
+                            '<div class="chip">' +
+                            '<i class="close material-icons">cloud</i>' +
+                            '<a target="_blank" style="color: #141414;">File not found/removed!</a>' +
                             '</div>' +
                             '<hr class="solid" style="border-top: 3px solid #bbb;">'
                         );
