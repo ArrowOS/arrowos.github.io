@@ -101,6 +101,20 @@ if (
 
             </div>
         </div>
+        <div style="padding-left: 15px;" class="row">
+            <div class="col s12 m12 l10 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-gw-3+1f-3d+2z"
+                    data-ad-client="ca-pub-5568741006164863"
+                    data-ad-slot="9060655737"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -225,6 +239,20 @@ if (
     <blockquote class="block">sha256sum <?php echo $initial_device_info['filename'] ?></blockquote>
     <br>
     <a href="https://blog.arrowos.net/posts/checking-build-integrity">You can also check our blog post for the same.</a>
+    <div style="padding-left: 15px;" class="row">
+            <div class="col s12 m12 l10 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-format="fluid"
+                    data-ad-layout-key="-gw-3+1f-3d+2z"
+                    data-ad-client="ca-pub-5568741006164863"
+                    data-ad-slot="9060655737"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+            </div>
+    </div>
 </div>
 
 <div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
