@@ -47,6 +47,7 @@
                                 $is_first = true;
                                 $changelogs = fetch_api_data($API_URL_CALLS['source_changelog'])['data'];
                                 $changelogs = json_decode($changelogs, true);
+                                krsort($changelogs);
                                 foreach ($changelogs as $version => $dates) {
                                 ?>
                                     <li class="active">
