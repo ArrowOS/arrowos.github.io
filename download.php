@@ -50,13 +50,11 @@ include_once('utils.php');
         <ul class="collapsible collapsible-accordion">
             <?php
             $devices_json = fetch_api_data($API_URL_CALLS['oem_devices_list']);
-            $devices_version = fetch_api_data($API_URL_CALLS['devices_version_list']);
-            $devices_variant = fetch_api_data($API_URL_CALLS['devices_variant_list']);
+            $devices_support_info = fetch_api_data($API_URL_CALLS['devices_support_info']);
 
-            if ($devices_json['code'] == "200" && $devices_version['code'] == "200" && $devices_variant['code'] == "200") {
+            if ($devices_json['code'] == "200" && $devices_support_info['code'] == "200") {
                 $devices_json = json_decode($devices_json['data'], true);
-                $devices_version = json_decode($devices_version['data'], true);
-                $devices_variant = json_decode($devices_variant['data'], true);
+                $devices_support_info = json_decode($devices_support_info['data'], true);
 
                 ksort($devices_json, SORT_STRING | SORT_FLAG_CASE);
             } else {
@@ -75,9 +73,8 @@ include_once('utils.php');
                             foreach ($devices as $device_codename) {
                             ?>
                                 <li>
-                                    <?php $versions = get_device_data($devices_version, $device_codename) ?>
-                                    <?php $variants = get_device_data($devices_variant, $device_codename) ?>
-                                    <a href="javascript:void(0);" class="sidenav-close" id="deviceLabel" data-versions="<?php echo $versions ?>" data-variants="<?php echo $variants ?>"><?php echo $device_codename ?></a>
+                                    <?php $supported_info = get_device_data($devices_support_info, $device_codename) ?>
+                                    <a href="javascript:void(0);" class="sidenav-close" id="deviceLabel" data-supported='<?php print_r($supported_info) ?>'><?php echo $device_codename ?></a>
                                 </li>
                             <?php } ?>
                         </ul>

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $('select').formSelect();
     var dpData = {
         get device() {
@@ -12,20 +12,24 @@ $(document).ready(function() {
         }
     };
 
-    $('#variant-selector').val(localStorage.getItem(dpData.device + '_variant'));
+    $('#variant-selector').val(localStorage.getItem(dpData.device + '_' + localStorage.getItem(dpData.device + '_version') + '_variant'));
     $('#version-selector').val(localStorage.getItem(dpData.device + '_version'));
     $('select').formSelect();
 
-    $('#version-selector').change(function() {
+    $('#version-selector').change(function () {
+        localStorage.setItem(dpData.device + '_version', dpData.versionSelected);
+        setDeviceData(dpData.device);
         reloadDP();
     })
 
-    $('#variant-selector').change(function() {
+    $('#variant-selector').change(function () {
+        localStorage.setItem(dpData.device + '_' + dpData.versionSelected + '_variant', dpData.variantSelected);
+        setDeviceData(dpData.device);
         reloadDP();
     })
 
     function reloadDP() {
-        loadDevicePage(dpData.device, dpData.variantSelected, dpData.versionSelected, supportedVersions, supportedVariants);
+        loadDevicePage(dpData.device, variantSelected, versionSelected, supportedVersions, supportedVariants);
     }
 
 });

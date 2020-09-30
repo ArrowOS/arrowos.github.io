@@ -23,15 +23,19 @@ function fetch_api_data($url)
 
 function get_device_data($device_data, $device_codename)
 {
-    $dev_data = "";
+    $dev_data = array();
+    $variants = array();
 
-    foreach (array_keys($device_data) as $data) {
-        if (in_array($device_codename, $device_data[$data])) {
-            $dev_data =  $dev_data . "," . $data;
+    foreach (array_keys($device_data[$device_codename]) as $version) {
+        $dev_data[$version] = $version;
+        foreach ($device_data[$device_codename][$version] as $variant) {
+            array_push($variants, $variant);
         }
+        $dev_data[$version] = array('variants' => $variants);
+        $variants = array();
     }
 
-    return substr($dev_data, 1);
+    return json_encode($dev_data);
 }
 
 if (isset($_POST['url'])) {
