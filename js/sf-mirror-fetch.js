@@ -109,15 +109,14 @@ $(document).ready(function() {
                     if (arrowMirror != null && arrowMirror != '' && arrowMirrorResp === 200) {
                         $('#display-mirrors').append(
                             '<div class="chip">' +
-                            '<i class="close material-icons">cloud</i>' +
-                            '<a target="_blank" style="color: #141414;" href="' + arrowMirror + '">arrow1</a>' +
+                            '<a target="_blank" style="color: #141414;" href="' + arrowMirror + '">' +
+                            '<i class="close material-icons">cloud</i>arrow1</a>' +
                             '</div>' +
                             '<hr class="solid" style="border-top: 3px solid #bbb;">'
                         );
                     } else {
                         $('#display-mirrors').append(
                             '<div class="chip">' +
-                            '<i class="close material-icons">cloud</i>' +
                             '<a target="_blank" style="color: #141414;">File not found/removed!</a>' +
                             '</div>' +
                             '<hr class="solid" style="border-top: 3px solid #bbb;">'
@@ -127,8 +126,8 @@ $(document).ready(function() {
                     $.each(mirrorsData, function(mirrorPlace, mirrorName) {
                         $('#display-mirrors').append(
                             '<div class="chip">' +
-                            '<i class="close material-icons">cloud</i>' +
-                            '<a target="_blank" style="color: #141414;" href="https://' + mirrorName + '.dl.sourceforge.net/project/' + projectName + filepath + '">' + mirrorPlace + '</a>' +
+                            '<a target="_blank" style="color: #141414;" href="https://' + mirrorName + '.dl.sourceforge.net/project/' + projectName + filepath + '">' +
+                            '<i class="close material-icons">cloud</i>' + mirrorPlace + '</a>' +
                             '</div>'
                         );
                     });
