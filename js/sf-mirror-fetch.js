@@ -18,7 +18,7 @@ $(document).ready(function() {
         var arrowMirrorResp = '';
         var mirrorsData = '';
 
-        var variant = localStorage.getItem(deviceCodeName + '_variant');
+        var variant = localStorage.getItem(deviceCodeName + '_' + version + '_variant');
         if (variant == 'official') {
             projectName = 'arrow-os';
         } else if (variant == 'experiments') {
