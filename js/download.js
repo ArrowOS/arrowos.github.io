@@ -6,12 +6,15 @@ var selectedDevice;
 var versionSelected;
 var variantSelected;
 
+var permalinkDevice = '';
+
 $(document).ready(function () {
     $('.navbar-fixed').hide();
     $('.collapsible').collapsible();
     $('.sidenav').sidenav();
 
-    var selectedDevice = $('#get_device').data('device') || localStorage.device;
+    permalinkDevice = $('#get_device').data('device');
+    var selectedDevice = permalinkDevice || localStorage.device;
 
     if (selectedDevice == null) {
         $('#device-content').load("/empty.html");
@@ -25,6 +28,11 @@ $(document).ready(function () {
         $('#device-page-back').trigger('click');
         $('#device-content').addClass("scale-transition scale-out");
         selectedDevice = $(this).text();
+        if (permalinkDevice != null) {
+            localStorage.setItem("device", selectedDevice);
+            window.location.href = "/download";
+            throw new Error("force reload page");
+        }
         setDeviceData(selectedDevice);
         loadDevicePage(selectedDevice, variantSelected, versionSelected, supportedVersions, supportedVariants);
     });
