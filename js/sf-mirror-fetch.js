@@ -1,7 +1,7 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var forceFetch = 0;
     var filetype;
-    $('body').on('click', '#fetch-mirrors:not(.clicked)', function() {
+    $('body').on('click', '#fetch-mirrors:not(.clicked)', function () {
         $('#fetch-mirrors').addClass('clicked')
         filetype = $(this).attr('name');
         var deviceCodeName = $('#device-codename').attr('name');
@@ -34,42 +34,67 @@ $(document).ready(function() {
         if (localStorage.getItem(filetype + version + variant + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
             if (localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName) != null) {
                 $.ajax({
-                    url: "/mirror.html",
-                    cache: false,
-                    dataType: "html",
-                    beforeSend: function() {
+                    type: 'POST',
+                    data: {
+                        'file_sha256': file_sha256,
+                        'version': version,
+                        'variant': variant,
+                        'filename': filename
+                    },
+                    beforeSend: function () {
                         $('#' + filetype + '-fetch-progress').append('<div class="progress"><div class="indeterminate"></div></div>');
                     },
-                    success: function(data) {
-                        $('#' + filetype + '-fetch-progress').empty();
-                        $('#mirrors-content').html(data);
-                        $('#device-content').hide();
-                        $('.navbar-fixed').show();
-                        $('#filename-title').append(filename);
-                        $('#display-mirrors').append(localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName));
-
-                        $('html, body').animate({
-                            scrollTop: $("#mirrors-section").offset().top - $(window).height() / 2
-                        }, 1000);
+                    url: 'https://get.mirror1.arrowos.net/download.php',
+                    success: function (data) {
+                        arrowMirror = data;
+                    },
+                    complete: function (xhr) {
+                        arrowMirrorResp = xhr.status;
+                        offlineMirrorData();
                     }
                 });
+
+                function offlineMirrorData() {
+                    var pageContent = '';
+                    $.ajax({
+                        url: "/mirror.html",
+                        cache: false,
+                        dataType: "html",
+                        success: function (data) {
+                            pageContent = data;
+                        },
+                        complete: function () {
+                            $('#' + filetype + '-fetch-progress').empty();
+                            $('#mirrors-content').html(pageContent);
+                            $('#device-content').hide();
+                            $('.navbar-fixed').show();
+                            $('#filename-title').append(filename);
+                            setArrowMirror();
+                            $('#display-mirrors').append(localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName));
+
+                            $('html, body').animate({
+                                scrollTop: $("#mirrors-section").offset().top - $(window).height() / 2
+                            }, 1000);
+                        }
+                    });
+                    $('#fetch-mirrors').removeClass('clicked')
+                }
             }
         } else {
             $.ajax({
                 type: 'POST',
                 data: { 'url': mirrorsUrl },
                 url: '/utils.php',
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#' + filetype + '-fetch-progress').append('<div class="progress"><div class="indeterminate"></div></div>');
                 },
-                success: function(data) {
+                success: function (data) {
                     mirrorsData = data;
                 },
-                complete: function() {
+                complete: function () {
                     fetchArrowMirror();
                 }
             });
-
         }
 
         // Fetch arrow mirror
@@ -83,10 +108,10 @@ $(document).ready(function() {
                     'filename': filename
                 },
                 url: 'https://get.mirror1.arrowos.net/download.php',
-                success: function(data) {
+                success: function (data) {
                     arrowMirror = data;
                 },
-                complete: function(xhr) {
+                complete: function (xhr) {
                     arrowMirrorResp = xhr.status;
                     showMirrorsContent(mirrorsData, arrowMirror);
                 }
@@ -100,30 +125,14 @@ $(document).ready(function() {
                 url: "/mirror.html",
                 cache: false,
                 dataType: "html",
-                success: function(data) {
+                success: function (data) {
                     $('#mirrors-content').html(data);
                     $('#device-content').hide();
                     $('.navbar-fixed').show();
                     $('#filename-title').append(filename);
 
-                    if (arrowMirror != null && arrowMirror != '' && arrowMirrorResp === 200) {
-                        $('#display-mirrors').append(
-                            '<div class="chip">' +
-                            '<a target="_blank" style="color: #141414;" href="' + arrowMirror + '">' +
-                            '<i class="close material-icons">cloud</i>arrow1</a>' +
-                            '</div>' +
-                            '<hr class="solid" style="border-top: 3px solid #bbb;">'
-                        );
-                    } else {
-                        $('#display-mirrors').append(
-                            '<div class="chip">' +
-                            '<a target="_blank" style="color: #141414;">File not found/removed!</a>' +
-                            '</div>' +
-                            '<hr class="solid" style="border-top: 3px solid #bbb;">'
-                        );
-                    }
-
-                    $.each(mirrorsData, function(mirrorPlace, mirrorName) {
+                    setArrowMirror();
+                    $.each(mirrorsData, function (mirrorPlace, mirrorName) {
                         $('#display-mirrors').append(
                             '<div class="chip">' +
                             '<a target="_blank" style="color: #141414;" href="https://' + mirrorName + '.dl.sourceforge.net/project/' + projectName + filepath + '">' +
@@ -142,9 +151,28 @@ $(document).ready(function() {
             });
             $('#fetch-mirrors').removeClass('clicked')
         }
+
+        function setArrowMirror() {
+            if (arrowMirror != null && arrowMirror != '' && arrowMirrorResp === 200) {
+                $('#arrow-mirrors').append(
+                    '<div class="chip">' +
+                    '<a target="_blank" style="color: #141414;" href="' + arrowMirror + '">' +
+                    '<i class="close material-icons">cloud</i>arrow1</a>' +
+                    '</div>' +
+                    '<hr class="solid" style="border-top: 3px solid #bbb;">'
+                );
+            } else {
+                $('#arrow-mirrors').append(
+                    '<div class="chip">' +
+                    '<a target="_blank" style="color: #141414;">File not found/removed!</a>' +
+                    '</div>' +
+                    '<hr class="solid" style="border-top: 3px solid #bbb;">'
+                );
+            }
+        }
     });
 
-    $('body').on('click', '#device-page-back', function() {
+    $('body').on('click', '#device-page-back', function () {
         $('.navbar-fixed').hide();
         $('#device-content').show();
         $('#mirrors-content').empty();
@@ -156,7 +184,7 @@ $(document).ready(function() {
         }
     });
 
-    $('body').on('click', '#mirrors-refresh', function() {
+    $('body').on('click', '#mirrors-refresh', function () {
         forceFetch = 1;
         $('#display-mirrors').empty();
         $('#display-mirrors').append('<div class="progress"><div class="indeterminate"></div></div>');
