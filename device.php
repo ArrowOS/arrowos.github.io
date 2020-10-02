@@ -68,11 +68,6 @@ if (
     exit("Something went wrong!");
 }
 ?>
-<div class="center hide-on-large-only">
-    <img class="main_logo" src="/img/logo.png">
-    <br>
-    <br>
-</div>
 
 <div style="padding-top: 50px;" class="container">
     <div class="row">
