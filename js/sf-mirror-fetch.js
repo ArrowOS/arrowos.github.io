@@ -14,8 +14,9 @@ $(document).ready(function () {
         var filepath = '/' + version + "/" + deviceCodeName + '/' + filename.trim();
         var file_sha256 = $('#' + filetype + '-file_sha256').text();
 
-        var arrowMirror = '';
-        var arrowMirrorResp = '';
+        var arrowMirrors = {};
+        var arrowMirrorUrl = '';
+        var arrowMirrorStatus = '';
         var mirrorsData = '';
 
         var variant = localStorage.getItem(deviceCodeName + '_' + version + '_variant');
@@ -45,10 +46,11 @@ $(document).ready(function () {
             },
             url: 'https://get.mirror1.arrowos.net/download.php',
             success: function (data) {
-                arrowMirror = data;
+                arrowMirrorUrl = data;
             },
             complete: function (xhr) {
-                arrowMirrorResp = xhr.status;
+                arrowMirrorStatus = xhr.status;
+                arrowMirrors["arrow1"] = {'url': arrowMirrorUrl, 'status': arrowMirrorStatus};
                 // SF mirrors
                 if (localStorage.getItem(filetype + version + variant + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
                     if (localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName) != null) {
@@ -100,7 +102,7 @@ $(document).ready(function () {
                     mirrorsData = data;
                 },
                 complete: function () {
-                    showMirrorsContent(mirrorsData, arrowMirror);
+                    showMirrorsContent(mirrorsData, arrowMirrors);
                 }
             });
         }
@@ -141,24 +143,26 @@ $(document).ready(function () {
         }
 
         function setArrowMirror() {
-            if (arrowMirror != null && arrowMirror != '' && arrowMirrorResp === 200) {
-                $('#arrow-mirrors').append(
-                    '<p><strong>ArrowOS Mirrors</strong></p>' +
-                    '<div class="chip">' +
-                    '<a target="_blank" style="color: #141414;" href="' + arrowMirror + '">' +
-                    '<i class="close material-icons">cloud</i>arrow1</a>' +
-                    '</div>' +
-                    '<hr class="solid" style="border-top: 3px solid #bbb;">'
-                );
-            } else {
-                $('#arrow-mirrors').append(
-                    '<p><strong>ArrowOS Mirrors</strong></p>' +
-                    '<div class="chip">' +
-                    '<a target="_blank" style="color: #141414;">File not found/removed!</a>' +
-                    '</div>' +
-                    '<hr class="solid" style="border-top: 3px solid #bbb;">'
-                );
-            }
+            Object.keys(arrowMirrors).forEach(function (mirror, index) {
+                if (this[mirror].url != null && this[mirror].url != '' && this[mirror].status === 200) {
+                    $('#arrow-mirrors').append(
+                        '<p><strong>ArrowOS Mirrors</strong></p>' +
+                        '<div class="chip">' +
+                        '<a target="_blank" style="color: #141414;" href="' + this[mirror].url + '">' +
+                        '<i class="close material-icons">cloud</i>'+ mirror +'</a>' +
+                        '</div>' +
+                        '<hr class="solid" style="border-top: 3px solid #bbb;">'
+                    );
+                } else {
+                    $('#arrow-mirrors').append(
+                        '<p><strong>ArrowOS Mirrors</strong></p>' +
+                        '<div class="chip">' +
+                        '<a target="_blank" style="color: #141414;">File not found/removed!</a>' +
+                        '</div>' +
+                        '<hr class="solid" style="border-top: 3px solid #bbb;">'
+                    );
+                }
+            }, arrowMirrors);
         }
     });
 
