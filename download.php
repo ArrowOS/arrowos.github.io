@@ -114,7 +114,6 @@ include_once('utils.php');
     <!-- JS -->
     <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/materialize.js"></script>
-    <script src="/js/init.js"></script>
     <script src="/js/download.js"></script>
     <script src="/js/sf-mirror-fetch.js"></script>
 
