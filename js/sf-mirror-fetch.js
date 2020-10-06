@@ -141,7 +141,9 @@ $(document).ready(function () {
                     $('#filename-title').append(filename);
 
                     setArrowMirror();
-                    $('#display-mirrors').append('<p><strong>Sourceforge Mirrors</strong></p>');
+                    console.log(mirrorsData)
+                    if (Array.isArray(mirrorsData) && mirrorsData.length)
+                        $('#display-mirrors').append('<p><strong>Sourceforge Mirrors</strong></p>');
                     $.each(mirrorsData, function (mirrorPlace, mirrorName) {
                         $('#display-mirrors').append(
                             '<div class="chip">' +
@@ -163,7 +165,8 @@ $(document).ready(function () {
         }
 
         function setArrowMirror() {
-            $('#arrow-mirrors').append('<p><strong>ArrowOS Mirrors</strong></p>');
+            if (!$.isEmptyObject(arrowMirrors))
+                $('#arrow-mirrors').append('<p><strong>ArrowOS Mirrors</strong></p>');
             Object.keys(arrowMirrors).forEach(function (mirror, index) {
                 if (this[mirror].url != null && this[mirror].url != '' && this[mirror].status === 200) {
                     $('#arrow-mirrors').append(
