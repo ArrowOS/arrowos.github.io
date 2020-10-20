@@ -36,6 +36,7 @@ $(document).ready(function () {
         $.ajax({
             type: 'POST',
             data: {
+                'device': deviceCodeName,
                 'file_sha256': file_sha256,
                 'version': version,
                 'variant': variant,
@@ -56,6 +57,7 @@ $(document).ready(function () {
                 $.ajax({
                     type: 'POST',
                     data: {
+                        'device': deviceCodeName,
                         'file_sha256': file_sha256,
                         'version': version,
                         'variant': variant,
