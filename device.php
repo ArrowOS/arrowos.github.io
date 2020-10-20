@@ -226,13 +226,7 @@ if (
             <?php } ?>
         </table>
     </div>
-    <strong>You can check sha256sum via the following command examples:</strong><br>
-    <b>Windows (Powershell):</b>
-    <blockquote class="block">Get-filehash <?php echo $initial_device_info['filename'] ?></blockquote>
-    <b>Linux (Ubuntu 20.4):</b>
-    <blockquote class="block">sha256sum <?php echo $initial_device_info['filename'] ?></blockquote>
-    <br>
-    <a href="https://blog.arrowos.net/posts/checking-build-integrity">You can also check our blog post for the same.</a>
+    <a href="https://blog.arrowos.net/posts/checking-build-integrity">Check our blog post for detailed info.</a>
     <div style="padding-left: 15px;" class="row">
             <div class="col s12 m12 l10 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
