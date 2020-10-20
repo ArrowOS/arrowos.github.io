@@ -74,18 +74,6 @@ if (
         <div class="row">
             <h4 class="primary-color" style="padding-bottom: 20px;"><?php echo ucwords(strtolower($initial_device_info['model']));
                                                                     if (!$initial_device_info['status']) echo " [DISCONTINUED]"; ?></h4>
-
-            <div class="input-field col s12 m4 l4">
-                <select id="version-selector" selected="selected">
-                    <?php foreach ($VERSIONS as $version) { ?>
-                        <option value="<?php echo strtolower($version); ?>" <?php if (!in_array(strtolower($version), $supportedVersions)) {
-                                                                                echo "disabled";
-                                                                            } ?>><?php echo ucfirst($version); ?></option>
-                    <?php } ?>
-                </select>
-                <label>Select version</label>
-            </div>
-
         </div>
         <div style="padding-left: 15px;" class="row">
             <div class="card card-theme-color darken-1 col s12 m12 l10 ">
@@ -119,6 +107,17 @@ if (
     <div class="row">
         <div class="row">
             <h4 id="downloads-section" class="primary-color" style="padding-bottom: 20px;">Downloads</h4>
+
+            <div class="input-field col s12 m4 l4">
+                <select id="version-selector" selected="selected">
+                    <?php foreach ($VERSIONS as $version) { ?>
+                        <option value="<?php echo strtolower($version); ?>" <?php if (!in_array(strtolower($version), $supportedVersions)) {
+                                                                                echo "disabled";
+                                                                            } ?>><?php echo ucfirst($version); ?></option>
+                    <?php } ?>
+                </select>
+                <label>Select version</label>
+            </div>
 
             <div class="input-field col s12 m4 l4">
                 <select id="variant-selector" selected="selected">
