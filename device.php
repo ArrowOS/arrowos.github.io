@@ -101,7 +101,7 @@ if (
     </div>
 </div>
 
-<div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
+<div style="margin-bottom: 25px;margin-top: 25px; background-color: #424242;" class="divider"></div>
 
 <div class="container">
     <div class="row">
@@ -201,7 +201,7 @@ if (
     </div>
 </div>
 
-<div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
+<div style="margin-bottom: 25px;margin-top: 25px; background-color: #424242;" class="divider"></div>
 
 <div class="container">
     <div class="row" style="overflow-x:auto;">
@@ -243,7 +243,7 @@ if (
     </div>
 </div>
 
-<div style="margin-bottom: 60px;margin-top: 60px; background-color: #424242;" class="divider"></div>
+<div style="margin-bottom: 25px;margin-top: 25px; background-color: #424242;" class="divider"></div>
 
 <div class="container">
     <div class="row">
