@@ -86,16 +86,11 @@ if (
         </div>
         <div style="padding-left: 15px;" class="row">
             <div class="col s12 m12 l10 ">
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-format="fluid"
-                    data-ad-layout-key="-gw-3+1f-3d+2z"
-                    data-ad-client="ca-pub-5568741006164863"
-                    data-ad-slot="9060655737"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5568741006164863" data-ad-slot="9060655737"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </div>
     </div>
@@ -192,6 +187,12 @@ if (
             </div>
         <?php } ?>
     </div>
+    <div class="center">
+        <a id="downloads-archive" class="btn-small card card-theme-color waves-effect grey darken-4 waves-light">
+            <i class="material-icons left">archive</i>archive
+        </a>
+        <div id="archive-fetch-progress" class="center"></div>
+    </div>
     <br>
     <div class="center">
         <div id="datapacket" style="text-align: center">
@@ -228,18 +229,13 @@ if (
     </div>
     <a href="https://blog.arrowos.net/posts/checking-build-integrity">Check our blog post for detailed info.</a>
     <div style="padding-left: 15px;" class="row">
-            <div class="col s12 m12 l10 ">
+        <div class="col s12 m12 l10 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                <ins class="adsbygoogle"
-                    style="display:block"
-                    data-ad-format="fluid"
-                    data-ad-layout-key="-gw-3+1f-3d+2z"
-                    data-ad-client="ca-pub-5568741006164863"
-                    data-ad-slot="9060655737"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5568741006164863" data-ad-slot="9060655737"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-            </div>
+        </div>
     </div>
 </div>
 
