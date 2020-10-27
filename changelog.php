@@ -16,7 +16,9 @@
     <script src="/js/jquery-3.5.1.min.js"></script>
 </head>
 
-<body>
+<body style="visibility: hidden !important;">
+    <div id="babasbmsgx" style="visibility: visible !important;">Please disable your adblock and script blockers to view
+        this page</div>
 
     <nav class="nav-background black-text z-depth-0">
         <div class="nav-wrapper container">
@@ -60,7 +62,7 @@
                                                 foreach ($dates as $date) {
                                                 ?>
                                                     <li <?php if ($is_first) { ?> class="active" <?php }
-                                                                                            $is_first = false ?>>
+                                                                                                $is_first = false ?>>
                                                         <div class="collapsible-header card-theme-color"><i class="tiny material-icons">calendar_today</i><?php echo $date ?></div>
                                                         <div class="collapsible-body">
                                                             <?php
@@ -85,20 +87,21 @@
                 </div>
                 <br><br>
                 <div class="col s12 m8 l8 offset-l2 offset-m2">
-                <div class="card card-theme-color z-depth-3 radius">
-                    <div class="center card-content">
-                        <span class="card-title">Oof Ads</span>
-                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                        <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5568741006164863" data-ad-slot="7462336018"></ins>
-                        <script>
-                            (adsbygoogle = window.adsbygoogle || []).push({});
-                        </script>
+                    <div class="card card-theme-color z-depth-3 radius">
+                        <div class="center card-content">
+                            <span class="card-title">Oof Ads</span>
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                            <ins class="adsbygoogle" style="display:block; text-align:center;" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-5568741006164863" data-ad-slot="7462336018"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
         </div>
     </div>
+    <script src="/js/blockAdBlock.js"></script>
     <script>
         $(document).ready(function() {
             $('.collapsible').collapsible();

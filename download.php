@@ -19,7 +19,9 @@ include_once('utils.php');
     <link href="/css/download.css" type="text/css" rel="stylesheet">
 </head>
 
-<body>
+<body style="visibility: hidden !important;">
+    <div id="babasbmsgx" style="visibility: visible !important;">Please disable your adblock and script blockers to view
+        this page</div>
     <?php if (isset($_GET['device'])) { ?>
         <div id="get_device" data-device="<?php echo $_GET['device'] ?>"></div>
     <?php } ?>
@@ -112,6 +114,7 @@ include_once('utils.php');
 
     <!--  Scripts-->
     <!-- JS -->
+    <script src="/js/blockAdBlock.js"></script>
     <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/materialize.js"></script>
     <script src="/js/download.js"></script>
