@@ -200,6 +200,15 @@ if (
             <a href="https://www.datapacket.com/" target="_blank"><img class="datapacket-logo" src="/img/datapacket_logo.png" alt="Datapacket"></a>
         </div>
     </div>
+    <div style="padding-left: 15px;" class="row">
+        <div class="col s12 m12 l10 ">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5568741006164863" data-ad-slot="9060655737"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
 </div>
 
 <div style="margin-bottom: 25px;margin-top: 25px; background-color: #424242;" class="divider"></div>
