@@ -41,6 +41,19 @@
                 <br><br><br>
                 <div class="col s12 m10 l10 offset-l1 offset-m1">
                     <div class="card card-theme-color darken-1">
+                        <div style="padding-left: 15px;" class="row">
+                            <div class="col s12 m12 l10 ">
+                                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5568741006164863" data-ad-slot="9060655737"></ins>
+                                <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m10 l10 offset-l1 offset-m1">
+                    <div class="card card-theme-color darken-1">
                         <div class="card-content white-text">
                             <ul style="border-width: 0px;" class="collapsible z-depth-0">
                                 <?php
@@ -81,6 +94,15 @@
                                         </div>
                                     </li>
                                 <?php } ?>
+                                <div style="padding-left: 15px;" class="row">
+                                    <div class="col s12 m12 l10 ">
+                                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5568741006164863" data-ad-slot="9060655737"></ins>
+                                        <script>
+                                            (adsbygoogle = window.adsbygoogle || []).push({});
+                                        </script>
+                                    </div>
+                                </div>
                             </ul>
                         </div>
                     </div>
