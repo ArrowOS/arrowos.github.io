@@ -39,6 +39,15 @@
                 <br><br>
                 <h4>Source Changelog</h4>
                 <br><br><br>
+                <div style="padding-left: 15px;" class="row">
+                    <div class="col s12 m12 l10 ">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5568741006164863" data-ad-slot="9060655737"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </div>
                 <div class="col s12 m10 l10 offset-l1 offset-m1">
                     <div class="card card-theme-color darken-1">
                         <div class="card-content white-text">
@@ -74,6 +83,15 @@
                                                                     ?>
                                                                 </p>
                                                             <?php } ?>
+                                                            <div style="padding-left: 15px;" class="row">
+                                                                <div class="col s12 m12 l10 ">
+                                                                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                                                                    <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-gw-3+1f-3d+2z" data-ad-client="ca-pub-5568741006164863" data-ad-slot="9060655737"></ins>
+                                                                    <script>
+                                                                        (adsbygoogle = window.adsbygoogle || []).push({});
+                                                                    </script>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </li>
                                                 <?php } ?>
