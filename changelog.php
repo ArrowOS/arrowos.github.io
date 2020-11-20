@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+include_once("./config/constants.php");
+require_once("utils.php");
+?>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
@@ -35,53 +40,24 @@
     <div class="container">
         <div class="row">
             <div style="padding-top: 10vh;" class="center">
-                <img class="main_logo" src="img/logo.png">
-                <br><br>
-                <h4>Source Changelog</h4>
-                <br><br><br>
+                <h4>Changelog</h4>
                 <div class="col s12 m10 l10 offset-l1 offset-m1">
                     <div class="card card-theme-color darken-1">
                         <div class="card-content white-text">
-                            <ul style="border-width: 0px;" class="collapsible z-depth-0">
-                                <?php
-                                include_once("./config/constants.php");
-                                require_once("utils.php");
-                                $is_first = true;
-                                $changelogs = fetch_api_data($API_URL_CALLS['source_changelog'])['data'];
-                                $changelogs = json_decode($changelogs, true);
-                                krsort($changelogs);
-                                foreach ($changelogs as $version => $dates) {
-                                ?>
-                                    <li class="active">
-                                        <div class="collapsible-header card-theme-color"><i class="tiny material-icons">label</i><?php echo ucfirst($version) ?></div>
-                                        <div class="collapsible-body">
-                                            <ul style="border-width: 0px;" class="collapsible z-depth-0">
-                                                <?php
-                                                $dates = array_keys($dates);
-                                                usort($dates, "compareByTimeStamp");
-                                                foreach ($dates as $date) {
-                                                ?>
-                                                    <li <?php if ($is_first) { ?> class="active" <?php }
-                                                                                                $is_first = false ?>>
-                                                        <div class="collapsible-header card-theme-color"><i class="tiny material-icons">calendar_today</i><?php echo $date ?></div>
-                                                        <div class="collapsible-body">
-                                                            <?php
-                                                            foreach (explode(PHP_EOL, $changelogs[$version][$date]) as $log) {
-                                                            ?>
-                                                                <p class="text-align-left">
-                                                                    <?php
-                                                                    echo trim($log);
-                                                                    ?>
-                                                                </p>
-                                                            <?php } ?>
-                                                        </div>
-                                                    </li>
-                                                <?php } ?>
-                                            </ul>
+                            <?php
+                            foreach ($VERSIONS as $version) {
+                            ?>
+                                <ul style="border-width: 0px;" class="collapsible z-depth-0">
+                                    <li>
+                                        <div class="collapsible-header card-theme-color" id="changelog-version" data-changelog_version="<?php echo $version ?>"><i class="tiny material-icons">label</i><?php echo ucfirst($version) ?></div>
+                                        <?php $version = explode(".", $version)[0] ?>
+                                        <div class="collapsible-body" id="<?php echo 'changelog-body-' . $version ?>">
+                                            <div id="<?php echo "changelog-progress-" . $version ?>"></div>
+                                            <div id="<?php echo "changelog-data-" . $version ?>"></div>
                                         </div>
                                     </li>
-                                <?php } ?>
-                            </ul>
+                                </ul>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -102,14 +78,7 @@
         </div>
     </div>
     <script src="/js/blockAdBlock.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.collapsible').collapsible();
-            $('body').on('click', '#changelog-page-back', function() {
-                window.location.href = "/download";
-            });
-        })
-    </script>
+    <script src="/js/changelog.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 </body>

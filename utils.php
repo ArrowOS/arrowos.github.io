@@ -63,3 +63,28 @@ function compareByTimeStamp($time1, $time2)
     else
         return 0;
 }
+
+function fetch_gerrit_changes($branch) {
+    $changeLog = array();
+    $gerritDomain = "https://review.arrowos.net";
+    $gerritUrl = $gerritDomain . "/changes/?q=status:merged+branch:" . $branch;
+    $changes = file_get_contents($gerritUrl);
+    $changes = json_decode(preg_replace('/^.+\n/', '', $changes));
+
+    foreach($changes as $change) {
+        $changeDate = explode(" ", $change->submitted)[0];
+        $projectName = explode("/", $change->project)[1];
+        $changeNum = $change->_number;
+        $changeSubject = $change->subject;
+
+        $changeLog[$changeDate][$projectName] = array();
+        $changeLog[$changeDate][$projectName][$changeNum] = array();
+        $changeLog[$changeDate][$projectName][$changeNum] = $changeSubject;
+    }
+
+    return $changeLog;
+}
+
+if (isset($_POST['gerrit_changelog']) && $_POST['gerrit_changelog'] == 'yes'
+        && isset($_POST['version']))
+    exit(json_encode(fetch_gerrit_changes($_POST['version'])));

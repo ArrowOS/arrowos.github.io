@@ -15,7 +15,6 @@ $VARIANTS = array(
 $API_URL_CALLS = array(
     'oem_devices_list' => 'https://update.arrowos.net/api/v1/oem/devices/all/',
     'devices_support_info' => 'https://update.arrowos.net/api/v1/devices/support/all/',
-    'device_info' => 'https://update.arrowos.net/api/v1/info/{device}/{variant}/{version}/{zipvariant}',
-    'source_changelog' => 'https://update.arrowos.net/api/v1/source/changelog'
+    'device_info' => 'https://update.arrowos.net/api/v1/info/{device}/{variant}/{version}/{zipvariant}'
 );
 ?>
