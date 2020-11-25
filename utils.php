@@ -77,11 +77,12 @@ function fetch_gerrit_changes($branch) {
         $changeNum = $change->_number;
         $changeSubject = $change->subject;
 
-        $changeLog[$changeDate][$projectName] = array();
-        $changeLog[$changeDate][$projectName][$changeNum] = array();
-        $changeLog[$changeDate][$projectName][$changeNum] = $changeSubject;
+        $changeLog[$changeDate][$changeNum] = array();
+        $changeLog[$changeDate][$changeNum][$projectName] = array();
+        $changeLog[$changeDate][$changeNum][$projectName] = $changeSubject;
     }
 
+    krsort($changeLog);
     return $changeLog;
 }
 
