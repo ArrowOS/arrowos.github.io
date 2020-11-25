@@ -28,10 +28,11 @@ $(document).ready(function () {
                     if (xhr.status === 200) {
                         $('#changelog-data-' + version).empty();
                         changelogData = $.parseJSON(changelogData);
-                        $.each(changelogData, function (date, project) {
+                        console.log(changelogData);
+                        $.each(changelogData, function (date, changeNum) {
                             $('#changelog-data-' + version).append('<h4><u>Changelog on ' + date + '</u></h4><br>')
-                            $.each(project, function (project, changeNum) {
-                                $.each(changeNum, function (changeNum, changeSubject) {
+                            $.each(changeNum, function (changeNum, project) {
+                                $.each(project, function (project, changeSubject) {
                                     $('#changelog-data-' + version).append(
                                         '<p class="text-align-left"><b>' + project + '</b>' +
                                         ': <a href="https://review.arrowos.net/#/c/' + changeNum +
