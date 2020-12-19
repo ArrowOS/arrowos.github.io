@@ -33,6 +33,7 @@ $(document).ready(function () {
         mirrorsUrl = mirrorsUrl + projectName + '&filename=' + filepath;
 
         // Fetch arrow mirror
+        // mirror1 prague
         $.ajax({
             type: 'POST',
             data: {
@@ -51,9 +52,9 @@ $(document).ready(function () {
             },
             complete: function (xhr) {
                 arrowMirrorStatus = xhr.status;
-                arrowMirrors["arrow1"] = {'url': arrowMirrorUrl, 'status': arrowMirrorStatus};
+                arrowMirrors["arrow1"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
 
-                // mirror2
+                // mirror2 miami
                 $.ajax({
                     type: 'POST',
                     data: {
@@ -69,16 +70,36 @@ $(document).ready(function () {
                     },
                     complete: function (xhr) {
                         arrowMirrorStatus = xhr.status;
-                        arrowMirrors["arrow2"] = {'url': arrowMirrorUrl, 'status': arrowMirrorStatus};
-        
-                        // SF mirrors
-                        if (localStorage.getItem(filetype + version + variant + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
-                            if (localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName) != null) {
-                                setSavedMirrorData();
+                        arrowMirrors["arrow2"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
+
+                        // mirror3 hk
+                        $.ajax({
+                            type: 'POST',
+                            data: {
+                                'device': deviceCodeName,
+                                'file_sha256': file_sha256,
+                                'version': version,
+                                'variant': variant,
+                                'filename': filename
+                            },
+                            url: 'https://get.mirror3.arrowos.net/download.php',
+                            success: function (data) {
+                                arrowMirrorUrl = data;
+                            },
+                            complete: function (xhr) {
+                                arrowMirrorStatus = xhr.status;
+                                arrowMirrors["arrow3"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
+
+                                // SF mirrors
+                                if (localStorage.getItem(filetype + version + variant + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
+                                    if (localStorage.getItem(filetype + version + variant + '_mirrors_' + deviceCodeName) != null) {
+                                        setSavedMirrorData();
+                                    }
+                                } else {
+                                    fetchSFMirrorData();
+                                }
                             }
-                        } else {
-                            fetchSFMirrorData();
-                        }
+                        });
                     }
                 });
             }
@@ -174,13 +195,13 @@ $(document).ready(function () {
                     $('#arrow-mirrors').append(
                         '<div class="chip">' +
                         '<a target="_blank" style="color: #141414;" href="' + this[mirror].url + '">' +
-                        '<i class="close material-icons">cloud</i>'+ mirror +'</a>' +
+                        '<i class="close material-icons">cloud</i>' + mirror + '</a>' +
                         '</div>'
                     );
                 } else if (this[mirror].status === 404) {
                     $('#arrow-mirrors').append(
                         '<div class="chip">' +
-                        '<a target="_blank" style="color: #141414;">File not found/removed!</a>' +
+                        '<a target="_blank" style="color: #141414;">' + mirror + ' : File not found/removed!</a>' +
                         '</div>'
                     );
                 }
