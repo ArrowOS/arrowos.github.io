@@ -52,7 +52,7 @@ $(document).ready(function () {
             },
             complete: function (xhr) {
                 arrowMirrorStatus = xhr.status;
-                arrowMirrors["arrow1"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
+                arrowMirrors["Europe"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
 
                 // mirror2 miami
                 $.ajax({
@@ -70,7 +70,7 @@ $(document).ready(function () {
                     },
                     complete: function (xhr) {
                         arrowMirrorStatus = xhr.status;
-                        arrowMirrors["arrow2"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
+                        arrowMirrors["USA"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
 
                         // mirror3 hk
                         $.ajax({
@@ -88,7 +88,7 @@ $(document).ready(function () {
                             },
                             complete: function (xhr) {
                                 arrowMirrorStatus = xhr.status;
-                                arrowMirrors["arrow3"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
+                                arrowMirrors["SE Asia"] = { 'url': arrowMirrorUrl, 'status': arrowMirrorStatus };
 
                                 // SF mirrors
                                 if (localStorage.getItem(filetype + version + variant + '_filedate_' + deviceCodeName) === filetype + '-' + datetime && forceFetch != 1) {
