@@ -3,7 +3,7 @@ include_once('./config/constants.php');
 include_once('utils.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
