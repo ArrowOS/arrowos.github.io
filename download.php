@@ -20,8 +20,7 @@ include_once('utils.php');
 </head>
 
 <body style="visibility: hidden !important;">
-    <div id="babasbmsgx" style="visibility: visible !important;">Please disable your adblock and script blockers to view
-        this page</div>
+    <div id="babasbmsgx" style="visibility: visible !important;"></div>
     <?php if (isset($_GET['device'])) { ?>
         <div id="get_device" data-device="<?php echo $_GET['device'] ?>"></div>
     <?php } ?>
