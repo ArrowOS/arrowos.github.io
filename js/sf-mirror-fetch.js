@@ -204,6 +204,12 @@ $(document).ready(function () {
                         '<a target="_blank" style="color: #141414;">' + mirror + ' : File not found/removed!</a>' +
                         '</div>'
                     );
+
+                    $('#mirrors-card').append(
+                        '<div class="chip">' +
+                        '<a id="downloads-archive" target="_blank" style="color: #141414; href=""">Check under archives!?</a>' +
+                        '</div>'
+                    )
                 }
             }, arrowMirrors);
         }
