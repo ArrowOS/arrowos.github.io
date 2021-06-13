@@ -188,6 +188,7 @@ $(document).ready(function () {
         }
 
         function setArrowMirror() {
+            var showArchivemsg = 0;
             if (!$.isEmptyObject(arrowMirrors))
                 $('#arrow-mirrors').append('<p><strong>ArrowOS Mirrors</strong></p>');
             Object.keys(arrowMirrors).forEach(function (mirror, index) {
@@ -204,6 +205,15 @@ $(document).ready(function () {
                         '<a target="_blank" style="color: #141414;">' + mirror + ' : File not found/removed!</a>' +
                         '</div>'
                     );
+
+                    if (showArchivemsg == 0) {
+                        $('#mirrors-card').append(
+                            '<div class="chip">' +
+                            '<a id="downloads-archive" style="color: #141414; href=""">Check if the file is available under archives!</a>' +
+                            '</div>'
+                        )
+                        showArchivemsg = 1;
+                    }
                 }
             }, arrowMirrors);
         }
