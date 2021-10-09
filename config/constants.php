@@ -1,5 +1,6 @@
 <?php
 $VERSIONS = array(
+    'arrow-12.0',
     'arrow-11.0',
     'arrow-10.0',
     'arrow-9.x'
