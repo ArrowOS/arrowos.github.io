@@ -105,7 +105,7 @@ include_once('utils.php');
         <div class="footer-copyright">
             <div class="container footer-center">
                 Designed by <b><a style="font-size: medium;" class="white-text" href="https://t.me/harshv23/">HarshV23
-                    </a></b><br>Copyright © 2020 ArrowOS<br><br>
+                    </a></b><br>Copyright © 2022 ArrowOS<br><br>
             </div>
         </div>
     </footer>
