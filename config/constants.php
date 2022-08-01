@@ -1,11 +1,13 @@
 <?php
+// Each ArrowOS version should be mentioned here
 $VERSIONS = array(
+    'arrow-12.1',
     'arrow-12.0',
     'arrow-11.0',
     'arrow-10.0',
     'arrow-9.x'
 );
-
+// Each ArrowOS variant should be mentioned here
 $VARIANTS = array(
     'official',
     'experiments',
