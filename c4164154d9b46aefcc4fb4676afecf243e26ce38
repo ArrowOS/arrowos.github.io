@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d58cb3a_dd24d4db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3
+      },
+      "writtenOn": "2022-08-02T06:39:11Z",
+      "side": 1,
+      "message": "Need official build variant screenshots and maybe a diff phone for mock. I will do in another patchset. Thanks a lot for your contribution",
+      "revId": "c4164154d9b46aefcc4fb4676afecf243e26ce38",
+      "serverId": "66da7299-18b4-411a-8fa2-12a880778196"
+    }
+  ]
+}
