@@ -227,7 +227,7 @@ if (
             <?php } ?>
         </table>
     </div>
-    <a href="https://blog.arrowos.net/posts/checking-build-integrity">Check our blog post for detailed info.</a>
+    <a href="https://blog.arrowos.net/posts/checking-build-integrity" target="_blank">Check our blog post for detailed info.</a>
     <div style="padding-left: 15px;" class="row">
         <div class="col s12 m12 l10 ">
             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
