@@ -1,12 +1,18 @@
 $(document).ready(function () {
-    var archiveServerUrl = "https://get.mirror1.arrowos.net/archive/archive.php";
 
     $('body').on('click', '#downloads-archive:not(.clicked)', function () {
         $('#downloads-archive').addClass('clicked');
         var deviceCodeName = $('#device-codename').attr('name');
 
+        let archiveServerUrl = "https://get.mirror3.arrowos.net/archive/archive.php";
+
+        let version = $('.select-dropdown').val() == null ? 'Arrow-12.1'  : $('.select-dropdown').val();
+
+        if (version == "Arrow-12.1") {
+                archiveServerUrl = 'https://get.mirror2.arrowos.net/archive/archive.php'
+        }
         // Fetch archive link
-        $.ajax({
+	$.ajax({
             type: 'POST',
             data: { 'device': deviceCodeName },
             url: archiveServerUrl,
