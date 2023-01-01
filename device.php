@@ -194,12 +194,6 @@ if (
         <div id="archive-fetch-progress" class="center"></div>
     </div>
     <br>
-    <div class="center">
-        <div id="datapacket" style="text-align: center">
-            <span class="datapacket-text">Powered by</span>
-            <a href="https://www.datapacket.com/" target="_blank"><img class="datapacket-logo" src="/img/datapacket_logo.png" alt="Datapacket"></a>
-        </div>
-    </div>
 </div>
 
 <div style="margin-bottom: 25px;margin-top: 25px; background-color: #424242;" class="divider"></div>
